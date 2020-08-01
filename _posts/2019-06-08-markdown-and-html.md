@@ -85,6 +85,9 @@ you can easy to change style in `_utility.html` and a sample of the formatting f
 
 <br>
 
+![smile](/assets/smile.png)
+
+
 <h2>5. image</h2>
 Try using `.width-30`, `.width-40`, `.width-50`, `.width-60`, `.width-70` and `.width-80` class! You can easily change the image width.
 
@@ -95,7 +98,6 @@ Try using `.width-30`, `.width-40`, `.width-50`, `.width-60`, `.width-70` and `.
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-80}
 {% endhighlight %}
 
-![smile](/assets/smile.png)
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg)
 <p></p>
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-30}
