@@ -35,7 +35,6 @@ theme_settings :
 
   # Disqus
   disqus_shortname : pebpung
-  comments: true
 
 # Pagination
 paginate: 6

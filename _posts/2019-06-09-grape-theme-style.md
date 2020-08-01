@@ -3,8 +3,8 @@ layout: post
 title: Sample Post with Grape-Theme style
 subtitle : How markdown is displayed as html
 tags: [Sample Post, Welcome to the Grape Theme!]
-author: Nayeong Kim
-comments : False
+author: Kimin Park
+comments : True
 ---
 
 This is an example of a post which includes code, quotes and backtick.
@@ -15,7 +15,7 @@ A sample of the formatting follows.
 
 <br>
 
-code, quotes and backtick를 포함하고 있는 게시물의 예입니다. 
+code, quotes and backtick를 포함하고 있는 게시물의 예입니다.
 
  `_utility.html`에서 스타일을 변경할 수 있으며, 서식 샘플은 아래와 같습니다.
 
@@ -45,4 +45,3 @@ def test :
 `Grape-Theme`
 {% endhighlight %}
 `Grape-Theme`
-
