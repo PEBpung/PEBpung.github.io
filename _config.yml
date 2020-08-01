@@ -34,7 +34,7 @@ theme_settings :
     instagram:
 
   # Disqus
-  disqus_shortname : pebpung
+  disqus_shortname : pebpung-github-io
 
 # Pagination
 paginate: 6
