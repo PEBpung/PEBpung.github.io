@@ -4,7 +4,7 @@ title: Sample Post with Grape-Theme style
 subtitle : How markdown is displayed as html
 tags: [Sample Post, Welcome to the Grape Theme!]
 author: Kimin Park
-comments : True
+comments: True
 ---
 
 This is an example of a post which includes code, quotes and backtick.

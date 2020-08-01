@@ -93,8 +93,9 @@ Try using `.width-30`, `.width-40`, `.width-50`, `.width-60`, `.width-70` and `.
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-30}
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-50}
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-80}
-![smile](/assets/smile.png)
 {% endhighlight %}
+
+![smile](/assets/smile.png)
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg)
 <p></p>
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-30}
