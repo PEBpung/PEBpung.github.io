@@ -1,3 +1,13 @@
+---
+layout: post
+title: Change Ubuntu 18.04 theme to Adapta
+subtitle : How Ubuntu theme is changed as Adapta
+tags: [Ubuntu, Theme]
+author: Kimin Park
+comments : True
+---
+
+
 이번 글은 `우분투의 테마`를 변경하는 방법입니다!
 
 우분투 18.04의 기본테마는 다음과 같습니다.
