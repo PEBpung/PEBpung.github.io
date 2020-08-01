@@ -99,7 +99,8 @@ Try using `.width-30`, `.width-40`, `.width-50`, `.width-60`, `.width-70` and `.
 {% endhighlight %}
 
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg)
-![modal](/assets/modal.png.width-30)
+![modal](/assets/modal.png).width-40
+
 <p></p>
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-30}
 ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg){: .width-50}
