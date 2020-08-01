@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Change Ubuntu 18.04 theme to Adapta
+title: Ubuntu 18.04 테마 변경하기
 subtitle : How Ubuntu theme is changed as Adapta
 tags: [Ubuntu, Theme]
 author: Kimin Park
