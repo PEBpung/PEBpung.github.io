@@ -47,3 +47,8 @@ sass:
 gems: [jekyll-paginate]
 bootstrap:
   assets: true
+
+# Google plugin
+plugins:
+	google-analytics:
+		tracking_id: UA-174230337-1
