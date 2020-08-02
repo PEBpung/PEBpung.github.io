@@ -1,6 +1,6 @@
 # Site Settings
 baseurl: ""
-url : "https://PEBpung.github.io"
+url : "https://pebpung.github.io"
 
 # Blog Settings
 theme_settings :
