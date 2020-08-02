@@ -16,17 +16,17 @@ theme_settings :
       - start : 2017-05-03
         end : 2018-05-06
         experience : company name, title
-    skills : 
+    skills :
       - skill : Deeplearning & Vision
         value : 60  # Percent value
-        
+
   # Icons
   icons :
     email: "mcuwwa29@google.com"
-    linkedin:  # Full URL 
+    linkedin:  # Full URL
     github: PEBpung
-    gitlab: 
-    bitbucket: 
+    gitlab:
+    bitbucket:
     google_plus:
     twitter:
     youtube:
@@ -50,5 +50,5 @@ bootstrap:
 
 # Google plugin
 plugins:
-	google-analytics:
-		tracking_id: UA-174230337-1
+  google-analytics:
+      tracking_id: UA-174230337-1
