@@ -24,7 +24,7 @@ comments : True
 
 맥 OS 처럼 깔끔한 디자인이 마음에 듭니다.
 
-그리고 화면도 왠지 더 넓어 보입니다.
+화면 크기도 왠지 더 넓어 보이는 효과가 있습니다.
 
 ## 1. 그놈 기능 개선(gnome-tweak-tool) 설치하기
 
@@ -56,7 +56,7 @@ Material한 디자인이란?  픽셀을 종이 질감 처럼!
 
 ![smile](/assets/img/2020-08-01/pic4.png)
 
-(출처: [https://github.com/adapta-project/adapta-gtk-theme](https://github.com/adapta-project/adapta-gtk-theme))
+(출처: [adapta-gtk-theme Github](https://github.com/adapta-project/adapta-gtk-theme))
 
 ```bash
 # 1. 저장소 추가
@@ -91,7 +91,7 @@ sudo apt-get install adapta-gtk-theme
 
 그래서 우리는 쉘(상단바) 또한 `Adapta` 테마로 바꿔줄 것입니다.
 
-우선 어플리케이션에서 **Ubuntu Software**에 ****들어갑니다.
+우선 어플리케이션에서 **Ubuntu Software**에 들어갑니다.
 
 ![smile](/assets/img/2020-08-01/pic8.png)
 
@@ -137,6 +137,7 @@ sudo apt-get install adapta-gtk-theme
 
 ---
 
+
 설치된 확장자는 직접 들어가서 설정을 바꿀 수 있습니다.
 
 우선 `톱니바퀴 모양`을 눌러줍니다.
@@ -145,7 +146,7 @@ sudo apt-get install adapta-gtk-theme
 
 빨간 동그라미에서 **상태바의 위치와 아이콘의 크기**를 변경해줍니다.
 
-![smile](/assets/img/2020-08-01/pic16.png)
+<img src="/assets/img/2020-08-01/pic16.png" width="400"></center>
 
 - Position and size 설정 방법
     1. **상태바 위치 변경**
@@ -158,7 +159,8 @@ sudo apt-get install adapta-gtk-theme
 
 상단에서 Appearance로 들어가 주세요.
 
-![smile](/assets/img/2020-08-01/pic17.png)
+<img src="/assets/img/2020-08-01/pic17.png" width="400"></center>
+
 
 - Appearance 설정 방법
     1. **맨 위에 체크되어 있는 것을 해제 하세요.**
