@@ -39,6 +39,7 @@ theme_settings :
 # Pagination
 paginate: 6
 paginate_path: "blog/page:num"
+google_fonts: NotoSansKR-Regular
 
 # Build Ssttings
 sass:
