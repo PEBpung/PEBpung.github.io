@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu 18.04 테마 변경하기
+title: "Ubuntu 18.04 테마 변경하기"
 subtitle : How Ubuntu theme is changed as Adapta
 tags: [Ubuntu, Theme]
 author: Kimin Park
@@ -146,7 +146,7 @@ sudo apt-get install adapta-gtk-theme
 
 빨간 동그라미에서 **상태바의 위치와 아이콘의 크기**를 변경해줍니다.
 
-<img src="/assets/img/2020-08-01/pic16.png" width="400"></center>
+<center><img src="/assets/img/2020-08-01/pic16.png" width="400"></center>
 
 - Position and size 설정 방법
     1. **상태바 위치 변경**
@@ -159,7 +159,7 @@ sudo apt-get install adapta-gtk-theme
 
 상단에서 Appearance로 들어가 주세요.
 
-<img src="/assets/img/2020-08-01/pic17.png" width="400"></center>
+<center><img src="/assets/img/2020-08-01/pic17.png" width="400"></center>
 
 
 - Appearance 설정 방법
