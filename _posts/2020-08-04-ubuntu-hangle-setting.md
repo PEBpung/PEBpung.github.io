@@ -1,13 +1,20 @@
 ---
 layout: post
 title: "Ubuntu에서 한/영 키 사용하는 방법!"
-subtitle : How Ubuntu Input mode  is changed as Hangle key
+subtitle : How to change the Hangle key in Ubuntu
 tags: [Ubuntu, Hangle, Setting]
 author: Kimin Park
 comments : True
 ---
 
-# 우분투 한/영 키 바꾸기
+안녕하세요! 이번 포스트는 우분투에서 한글키 사용하는 방법에 대한 내용입니다!
+
+우분투에서의 기본 Input 변경 키는 Shift+Space 입니다.
+
+하지만 한글키에 익숙한 분들은 두가지 키를 동시에 사용하는 게 불편하실 것 입니다.
+
+그래서 우분투에서 한글키를 사용하는 방법을 찾아서 설정했습니다.
+
 
 ## 1. 그놈 기능 개선(gnome-tweak-tool) 설치하기
 
