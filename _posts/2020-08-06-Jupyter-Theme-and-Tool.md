@@ -1,3 +1,13 @@
+---
+layout: post
+title: "주피터 노트북 테마 & 확장 기능 사용하기"
+subtitle : 
+tags: [Ubuntu, Jupyter, Theme, blog]
+author: Kimin Park
+comments : True
+---
+
+
 오늘은 `주피터 노트북 테마`를 변경하고 `확장 기능`까지 사용할 수 있는 방법을 다뤄보겠습니다.
 
 <br>
