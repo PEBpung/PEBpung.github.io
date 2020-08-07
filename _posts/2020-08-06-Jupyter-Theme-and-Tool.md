@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "주피터 노트북 테마 & 확장 기능 사용하기"
-subtitle : 
+subtitle :
 tags: [Ubuntu, Jupyter, Theme, blog]
 author: Kimin Park
 comments : True
@@ -64,23 +64,23 @@ pip install jupyterthemes
 
 <br>
 
-- ***`chesterish**`
+- ***`chesterish`**  
 전체적으로 어두운 테마*
-- ***`grade3`**
+- ***`grade3`**  
 밝은 분위기의 테마*
-- ***`gruvboxd`**
+- ***`gruvboxd`**  
 어두운 테마와 갈색 계열의 조합*
-- ***`gruvboxl`**
+- ***`gruvboxl`**  
 노란 느낌의 테마*
-- ***`monokai`**
+- ***`monokai`**  
 개발자용 테마*
-- ***`oceans16`**
+- ***`oceans16`**  
 파란 계열의 테마*
-- ***`onedork`**
-이것도 ****파란 계열의 테마*
-- ***`solarizedd`**
+- ***`onedork`**  
+파란 계열의 테마*
+- ***`solarizedd`**  
 초록 계열의 테마*
-- ***`solarizedl`***
+- ***`solarizedl`***  
 
 <br>
 
@@ -119,8 +119,11 @@ jt- r #default theme으로 복귀
 
 ---
 
-<br>
 
+제가 생각 했을 때 가장 괜찮아 보이는 테마입니다.
+<br>
+미리 보시고 가장 마음에 드시는 테마를 고르면 됩니다!
+<br>
 
 ![flow](/assets/img/2020-08-06/pic1.png)
 ***oceans16 테마***
@@ -142,7 +145,7 @@ jt- r #default theme으로 복귀
 
 <br>
 
-## 주피터 확장 기능
+## 주피터 확장 기능 설치하기
 
 ---
 
@@ -173,7 +176,7 @@ conda install -c conda-forge jupyter_contrib_nbextensions
 
 <br>
 
-## 확장 프로그램 설치하기
+## 확장 프로그램 설정하기
 
 ---
 
@@ -190,34 +193,31 @@ jupyter notebook
 확장 기능 탭에 들어가는 방법은 `두 가지`입니다.
 
 1. **링크로 들어가기.**
-
-[http://localhost:8888/nbextensions](http://localhost:8888/nbextensions)
+<br>
+  [http://localhost:8888/nbextensions](http://localhost:8888/nbextensions)
 
 <br>
 
-❗ local host의 주소에 따라 `링크의 주소`(8888)가 변경될 수 있습니다.
+  ❗ local host의 주소에 따라 `링크의 주소`(8888)가 변경될 수 있습니다.
 
 <br>
 
-2. **파일의 Edit에서 들어가기**
+ 2. **파일의 Edit에서 들어가기**
 
 ![flow](/assets/img/2020-08-06/pic5.png)
 
-<br>
-
-위에서 `Edit`을 클릭해 줍니다.
+우선 화면 위에서 `Edit`을 클릭해 줍니다.
 
 <br>
 
 ![flow](/assets/img/2020-08-06/pic6.png)
 
-<br>
 
 그리고 `nbextensions config`를 누르시면 설정하는 곳으로 들어가게 됩니다.
 
 <br>
 
-확장 기능 탭에 들어가면 아래와 같은 화면을 보게 됩니다.
+``확장 기능 탭``에 들어가면 아래와 같은 화면이 보일 것 입니다.
 
 <br>
 
@@ -238,21 +238,59 @@ jupyter notebook
 
 <br>
 
-- `Table of Contents` (목차)
+#### `Table of Contents` (목차)
 
 <br>
 
-  ![flow](/assets/img/2020-08-06/pic8.png)
+![flow](/assets/img/2020-08-06/pic8.png)
 
-  <br>
+<br>
 
-    마크다운의 `Heading` 크기에 맞춰서 자동으로 `목차`가 생깁니다.
+마크다운의 `Heading` 크기에 맞춰서 자동으로 `목차`가 생깁니다.
 
-    목차를 클릭하면 해당 위치로 가주기 때문에 매우 편리한 기능입니다.
+목차를 클릭하면 해당 위치로 가주기 때문에 매우 편리한 기능입니다.
 
-    <br>
+<br>
 
-- `hinterland` (자동완성)
+#### `hinterland` (자동완성)
+
+<br>
+
+![flow](/assets/img/2020-08-06/pic11.png)
+
+<br>
+
+주피터 노트북은 다른 IDE와 다르게 `자동완성` 기능이 없습니다.
+
+<br>
+
+확장 기능을 활성화 하면 알아 코드를 `자동완성` 을 시켜줍니다.
+
+<br>
+
+#### `Variable Inspector` (변수 탐색기)
+
+<br>
+
+![flow](/assets/img/2020-08-06/pic12.png)
+
+<br>
+
+`변수의 값`을 볼 수 있기 때문에 중간 중간 `디버깅 용도`로 좋을 것 같습니다.
+
+<br>
+
+#### `Collapsible Headings` (섹션 접기)
+
+<br>
+
+![flow](/assets/img/2020-08-06/pic10.png)
+
+화살표 모양을 눌러서 `섹션`을 접으면 좀 더 깔끔하게 만들 수 있습니다.
+
+<br>
+
+#### `ExececuteTime` (코드 실행 시간)
 
 <br>
 
@@ -260,51 +298,16 @@ jupyter notebook
 
 <br>
 
-    주피터 노트북은 다른 IDE와 다르게 `자동완성` 기능이 없습니다.
-
-    하지만 이 확장 기능을 활성화 하면 탭을 누르지 않아도 코드를 `자동완성` 시켜줍니다.
-
-    <br>
-
-- **`Variable Inspector`** (변수 탐색기)
-
-    ![flow](/assets/img/2020-08-06/pic10.png)
-
-    <br>
-
-`변수의 값`을 볼 수 있기 때문에 중간 중간 `디버깅 용도`로 좋을 것 같습니다.
+코드의 `실행시간`을 알려주는 기능입니다.
 
 <br>
 
-- `Collapsible Headings` (섹션 접기)
+모델 학습할 때 시간 측정하기에 참 좋아보입니다.
 
 <br>
 
-    ![flow](/assets/img/2020-08-06/pic11.png)
+이외에도 다양한 기능이 많습니다.
 
-    화살표 모양을 눌러서 `섹션`을 접으면 좀 더 깔끔하게 만들 수 있습니다.
+<br>
 
-    <br>
-
-- `ExececuteTime` (코드 실행 시간)
-
-  <br>
-
-
-    ![flow](/assets/img/2020-08-06/pic12.png)
-
-    <br>
-
-    코드의 `실행시간`을 알려주는 기능입니다.
-
-    <br>
-
-    모델 학습할 때 시간 측정하기에 참 좋아보입니다.
-
-    <br>
-
-    이외에도 다양한 기능이 많습니다.
-
-    <br>
-
-    만약 더 유용한 기능을 찾게 된다면 이 포스트에 추가하겠습니다!
+만약 더 유용한 기능을 찾게 된다면 이 포스트에 추가하겠습니다!
