@@ -196,8 +196,9 @@ jupyter notebook
 
 확장 기능 탭에 들어가는 방법은 `두 가지`입니다.
 
-1. **링크로 들어가기.**
+#### **`링크로 들어가기`**
 <br>
+
   [http://localhost:8888/nbextensions](http://localhost:8888/nbextensions)
 
 <br>
@@ -206,7 +207,7 @@ jupyter notebook
 
 <br>
 
- 2. **파일의 Edit에서 들어가기**
+####  **``파일의 Edit에서 들어가기``**
 
 ![flow](/assets/img/2020-08-06/pic5.png)
 
