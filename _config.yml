@@ -9,7 +9,7 @@ theme_settings :
 
   # Profile Settings
   profile :
-    image : assets/img/my.jpeg
+    image : assets/img/myProfile.JPG
     username : Kimin Park
     description : 안녕하세요!
     experience :
