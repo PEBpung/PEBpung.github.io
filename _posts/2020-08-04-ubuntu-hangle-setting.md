@@ -2,7 +2,7 @@
 layout: post
 title: "Ubuntu에서 한/영 키 사용하는 방법!"
 subtitle : How to change the Hangle key in Ubuntu
-tags: [Ubuntu, Hangle, Setting]
+tags: [Ubuntu]
 author: Kimin Park
 comments : True
 ---

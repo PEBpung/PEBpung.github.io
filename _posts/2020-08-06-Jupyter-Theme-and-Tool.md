@@ -2,7 +2,7 @@
 layout: post
 title: "주피터 노트북 테마 & 확장 기능 사용하기"
 subtitle :
-tags: [Ubuntu, Jupyter, Theme, blog]
+tags: [Ubuntu]
 author: Kimin Park
 comments : True
 ---

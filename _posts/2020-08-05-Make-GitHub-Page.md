@@ -2,7 +2,7 @@
 layout: post
 title: "GitHub 블로그 시작하기 (GitHub Page, Jekyll)"
 subtitle : How to start the blog in GitHub
-tags: [Ubuntu, GitHub, Theme, blog]
+tags: [Ubuntu]
 author: Kimin Park
 comments : True
 ---
