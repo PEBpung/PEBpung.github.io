@@ -4,6 +4,7 @@ title: "[Statistics 110] 9강- 기댓값, 지시확률변수와 선형성"
 subtitle : 기대값
 tags: [Statistics]
 author: Kimin Park
+use_math: true
 comments : True
 ---
 
@@ -80,7 +81,7 @@ Fundamental Bridge
 
 - **이산확률변수의 기대값을 이용**
 
-    ![Untitled%204.png](images/Untitled%204.png)
+    ![Untitled%204.png](/assets/img/2020-10-11-statistics/Untitled%204.png)
 
 - **기대값의 선형성을 이용**
 
@@ -90,4 +91,4 @@ $X = X_1+ ... +X_n$ 이기 때문에
 
 $E(X)=n⋅E(X​1​​)=np$ 
 
-![Untitled%205.png](images/Untitled%205.png)
+![Untitled%205.png](/assets/img/2020-10-11-statistics/Untitled%205.png)

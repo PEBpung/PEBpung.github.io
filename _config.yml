@@ -53,3 +53,10 @@ bootstrap:
 plugins:
   google-analytics:
       tracking_id: UA-174230337-1
+
+# Math equation
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
