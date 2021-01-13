@@ -2,7 +2,7 @@
     print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'. 
     modal : True # If 'True' is selected, modal can open in 'portfolio.html'. 
     url : https://github.com/PEBpung/Lpoint-Hackathon
-    image : "Lpoint.jpg" # path: assets/project/
+    image : Lpoint.jpg 
     date : 2020.12.23 - Recommender System
     title : L.point 추천 시스템
     summary : 고객의 행동 데이터를 기반으로 상위 K개 제품을 추천!
