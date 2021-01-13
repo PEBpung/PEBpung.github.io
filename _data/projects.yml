@@ -42,20 +42,20 @@
     description : Unet++ model을 활용하여 셸로우 포커스를 만들어 줍니다. 
     contents :
         - title : 1. 데이터 수집
-          image : sample.jpg
+          image : sample.png
           description : <li>CelebA 데이터셋/li>
             <li>총 30,000장의 이미지/li>
             <li>이미지 사이즈- 512X512 </li> 
             <li>얼굴 조각-skin, nose, eyes 등</li> 
 
         - title : 2. 모델 설계
-          image : Preprocessing.jpg
+          image : model.png
           description : <li>총 2개의 모델을 고려-Unet, Unet++</li> 
             <li>두 개의 모델 비교</li> 
             <li>UNet++이 더욱 안정적으로 수렴</li> 
 
         - title : 3. 셸로우 포커스 만들기
-          image : Gaussian.jpg
+          image : Gaussian.png
           description : <li>segmentation으로 피사체와 배경을 분리</li>
             <li>blurring 기술로 배경을 흐리게</li>
             <li>피사체를 배경의 원래 위치에 합성</li>
