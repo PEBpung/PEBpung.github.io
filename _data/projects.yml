@@ -1,38 +1,63 @@
-- project :
+- project : 
     print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'. 
     modal : True # If 'True' is selected, modal can open in 'portfolio.html'. 
-    url : https://github.com/naye0ng/Grape-Theme # Full URL
-    image : "portfolio.png" # path: assets/project/
-    date : 2019.06.09 - Developing
-    title : Grape-Theme
-    summary : A awesome jekyll theme!
-    description : This project is my first jekyll theme. and everyone can customize this easily.  
+    url : https://github.com/PEBpung/Lpoint-Hackathon
+    image : "Lpoint.jpg" # path: assets/project/
+    date : 2020.12.23 - Recommender System
+    title : L.point 추천 시스템
+    summary : 고객의 행동 데이터를 기반으로 상위 K개 제품을 추천!
+    description : L.POINT(롯데포인트)에서 제공한 온라인 쇼핑 구매 데이터를 활용해서 추천 시스템을 개발하였다.
     contents :
-        - title : 1. 블로그 첫 화면 구성
-          image : home.png
-          description : <li>Responsive Layout</li>
-            <li>User Profile</li> 
-            <li>Tags</li> 
-            <li>Projects</li> 
-            <li>Pagination</li>
-        - title : 2. 태그 페이지
-          image : tags.png
-          description : <li>Responsive Layout</li> 
-            <li>Tags</li> 
-        - title : 3. 남은 개발 과제
-          image :
-          description : <li>project 부분 디자인 변경</li>
-            <li>favicon.ico, search 기능</li>
-            <li>OG Tag 추가</li>
-            <li>profile 이미지 효과</li>
+        - title : 1. Structure
+          image : Structure.jpg
+          description : <li>L.point 데이터 구조</li>
+            <li>외부데이터 활용</li> 
+            <li>변수 생성 데이터</li> 
+            <li>최종 Input 데이터</li> 
+            <li>사용된 모델</li>
+            <li>평가지표 종류</li>
+
+        - title : 2. Data Preprocessing
+          image : Preprocessing.jpg
+          description : <li>검색 키워드를 통해 상품 분류명 예측</li> 
+            <li>롯데 홈쇼핑 크롤링을 활용</li> 
+            <li>Labeling Data 증가</li> 
+
+        - title : 3. Wide & Deep Model
+          image : Model.jpg
+          description : <li>Wide Deep Model 적용</li>
+            <li>Wide 모델은 Cross Product를 통한 정확한 추천</li>
+            <li>Deep 모델은 딥러닝 모델을 통한 광범위한 추천</li>
+            <li>사용자 접속 시 실시간 Log 추적 가능</li>
             <li>gem 배포</li> 
 
-- project :
+- project : 
     print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'. 
     modal : True # If 'True' is selected, modal can open in 'portfolio.html'. 
-    url :  # Full URL
-    image : # path: assets/project/
-    date : 2019.06.09 - Developing
-    title : Dummy project
-    summary : This is Dummy
-    description :  
+    url :  https://github.com/PEBpung/Portrait
+    image : Portrait.png
+    date : 2019.11.10 - Portrait mode
+    title : 인물사진 모드 만들기
+    summary : Segmentation 기술을 활용한 인물사진 모드 구현.
+    description : Unet++ model을 활용하여 셸로우 포커스를 만들어 줍니다. 
+    contents :
+        - title : 1. 데이터 수집
+          image : sample.jpg
+          description : <li>CelebA 데이터셋/li>
+            <li>총 30,000장의 이미지/li>
+            <li>이미지 사이즈- 512X512 </li> 
+            <li>얼굴 조각-skin, nose, eyes 등</li> 
+
+        - title : 2. 모델 설계
+          image : Preprocessing.jpg
+          description : <li>총 2개의 모델을 고려-Unet, Unet++</li> 
+            <li>두 개의 모델 비교</li> 
+            <li>UNet++이 더욱 안정적으로 수렴</li> 
+
+        - title : 3. 셸로우 포커스 만들기
+          image : Gaussian.jpg
+          description : <li>segmentation으로 피사체와 배경을 분리</li>
+            <li>blurring 기술로 배경을 흐리게</li>
+            <li>피사체를 배경의 원래 위치에 합성</li>
+            <li>문제-Blur 처리한 경계선이 너무 또렷함</li>
+            <li>해결방안-Gaussian Blur 사용</li> 
