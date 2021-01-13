@@ -11,14 +11,18 @@ theme_settings :
   profile :
     image : assets/img/myProfile.JPG
     username : Kimin Park
-    description : 안녕하세요!
+    description : 코딩과 개발을 좋아하고 딥러닝 엔지니어를 꿈꾸고 있습니다.
     experience :
-      - start : 2017-05-03
-        end : 2018-05-06
-        experience : company name, title
+      - start : 2020-07-23
+        end : 2020-12-23
+        experience : Aiffel 강남, 영상처리
     skills :
-      - skill : Deeplearning & Vision
-        value : 60  # Percent value
+      - skill : Deep learning
+        value : 70  # Percent value
+      - skill : Python 
+        value : 60  
+      - skill : Machine learning
+        value : 50  
 
   # Icons
   icons :
