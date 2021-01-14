@@ -1,0 +1,39 @@
+---
+layout: post
+title: "0. Introducing MLOps 소개"
+subtitle : Introducing MLOps
+tags: [MLOps]]
+author: Kimin Park
+comments : True
+---
+
+
+현재 MLOps 스터디를 진행하고 있다. 스터디에서 첫번째로 선정한 책은 Mark Treveil의 'Introducing MLOps'라는 책이다. 책의 내용을 정리하기 전에 간단하게 책 소개를 하고자한다. 
+
+## Introducing MLOps
+
+<center><img src="/assets/2021-01-14/Untitled.png" width="400"></center>
+
+<br>
+
+먼저 이 책을 출판한 O'Reilly에 대해서 간단히 설명하자면 프로그래밍 관련된 서적을 출판하는 미국의 출판사이다. 이 책은 생각보다 양이 많지 않아서 처음 읽기에 좋을 것 같다. 목차를 훑어본 결과 MLOps의 이론적인 내용을 알려주는 책이라고 생각된다. 우리의 궁극적인 목표는 이론만이 아닌 실제 서비스를 구현할 만한 스킬을 가지는 것이다. 그 목표를 달성하기 위해서 MLOps의 토대를 마련하는 책이기 때문에 의미가 있는 책이다. 목차는 다음과 같다. 
+
+1. Why Now and Challenges
+2. People of MLOps
+3. Key MLOps Features
+4. Developing Models
+5. Preparing for
+6. Deploying to Production
+7. Monitoring and Feedback Loop
+8. Model Governance
+9. MLOps in Practice: Consumer Credit Risk Management
+10. MLOps in Practice: Marketing Recommendation Engines
+11. MLOps in Practice: Consumption Forecast
+
+앞으로 간략하게라도 목차의 순서대로 정리할 예정이다. 
+
+## 책을 구독하는 방법
+
+아래 링크를 통해 O'Reilly를 구독하면 저렴하게 볼 수 있을 것이다. 
+
+[ACM Student Membership 구독 링크](https://hack-jam.tistory.com/m/31)
