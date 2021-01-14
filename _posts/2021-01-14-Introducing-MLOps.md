@@ -2,7 +2,7 @@
 layout: post
 title: "0. Introducing MLOps 소개"
 subtitle : Introducing MLOps
-tags: [MLOps]]
+tags: [MLOps]
 author: Kimin Park
 comments : True
 ---
