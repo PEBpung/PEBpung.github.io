@@ -43,11 +43,11 @@ layout: page
         {% if post.categories == page.categories %}
           {% assign count = count | plus: 1 %}
           <!-- 글의 목록을 최대 3개만 허용 -->
-          {% if count < 4 %}
+          {% if count < 8 %}
             <tr>
               <!-- 각 포스트의 링크도 자신의 사이트에 맞게 수정 -->
               <th class="more-posts-title">
-                <a href="{{ site.url }}{ { post.url }}"></a>
+                <a href="{{ site.url }}/{ { post.url }}"></a>
               </th>
               <td class="more-posts-date">{{ post.date | date: '%Y. %m. %d' }}</td>
             </tr>
