@@ -43,7 +43,7 @@ theme_settings :
 # Pagination
 paginate: 6
 paginate_path: "blog/page:num"
-google_fonts: NotoSansKR-Regular
+google_fonts: Lato
 
 # Build Ssttings
 sass:
@@ -68,3 +68,14 @@ incremental: false
 # Category
 category_dir: category/
 tag_dir: tag/
+
+
+# -----------------------------------------------------------------------------
+#  Advanced configuration
+# -----------------------------------------------------------------------------
+kramdown:
+  footnote_backlink: '&#x21a9;&#xfe0e;'
+  math_engine:       mathjax
+  math_engine_opts:
+    preview:         true
+    preview_as_code: true
