@@ -10,7 +10,7 @@ theme_settings :
   # Profile Settings
   profile :
     image : assets/img/myProfile.JPG
-    username : Kimin Park
+    username : pebpung
     description : 코딩과 개발을 좋아하고 딥러닝 엔지니어를 꿈꾸고 있습니다.
     experience :
       - start : 2020-07-23
