@@ -3,6 +3,12 @@
 	font-family: 'Lato', 'Sans-serif';
 	box-sizing: border-box;
 }
+
+@include selection {
+	background: $theme-color;
+	color: $theme-bright;
+  }
+
 html, body{height:100%;}
 
 body{
