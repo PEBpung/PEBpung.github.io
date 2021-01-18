@@ -5,7 +5,7 @@ url : "https://pebpung.github.io"
 # Blog Settings
 theme_settings :
   title : 뜨거운 감자
-  favicon : assets/favicon.ico
+  favicon : assets/red.ico
 
   # Profile Settings
   profile :
