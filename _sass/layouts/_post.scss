@@ -69,6 +69,12 @@
     border: 1px solid #E5E5E5;
     padding: 10px 10px 5px;
     margin: 100px 166.5px;
+    @media (max-width: 991px) {
+      margin: 10%;
+    }
+    @media (max-width: 576px) {
+      margin: 2%;
+    }
     clear: both;
     display: block;
     table {
