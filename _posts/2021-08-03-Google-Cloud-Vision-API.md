@@ -1,10 +1,9 @@
-
 ---
 layout: post
 title: "Google Cloud Vision API 사용하기"
-subtitle : Developing Models
-tags: [MLOps]
-categories: MLOps
+subtitle : Cloud Vision API
+tags: [Google]
+categories: API
 author: Kimin Park
 comments : True
 ---
@@ -32,6 +31,8 @@ comments : True
 <br>
 
 위와 같은 그림에서 파란색 박스인 사용 버튼을 클릭합니다. 
+
+<br>
 
 ## 2. 사용자 인증 정보 만들기
 
@@ -63,6 +64,8 @@ comments : True
 
 다음과 같은 순서로 진행합니다. 
 
+<br>
+
 1. 애플리케이션 데이터를 선택합니다.
 2. "아니요, 사용하지 않습니다."를 선택합니다.
 
@@ -81,6 +84,8 @@ comments : True
 <br>
 
 (선택사항)은 따로 설정을 하지 않아도 돼서 완료 버튼을 눌러줍니다. 
+
+<br>
 
 ## 3. Json 파일 만들기
 
@@ -119,6 +124,8 @@ comments : True
 <br>
 
 여기서 Json 파일을 만들면 xxxx.json 파일이 생성 됩니다!!
+
+<br>
 
 ## 4. 사용하기
 
