@@ -44,10 +44,10 @@ comments : True
 
 Auto Encoder는 다양한 관점에서 해석이 가능합니다. 다시 말해, 다양한 분야에서 사용될 수 있다는 뜻이죠. 일반적으로 4가지 관점이 있습니다. 이에 대해서 다음 글을 통해 하나씩 알아보도록 하겠습니다.
 
-**1. Unsupervised learning**
-**2. Maximum Likelihood density estimation**
-**3. Manifold learning**
-**4. Generative model learning**
+1. **Unsupervised learning**
+2. **Maximum Likelihood density estimation**
+3. **Manifold learning**
+4. **Generative model learning**
 
 <br>
 
