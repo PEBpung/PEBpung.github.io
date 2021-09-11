@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "1.오토인코더(AutoEncoder)"
-subtitle : 오토인코더(Auto Encoder)란 입력이 들어왔을 때, 해당 입력 데이터를 최대한 compression 시킨 후, compressed data를 다시 본래의 입력 형태로 복원 시키는 신경망입니다.
+subtitle : 오토인코더란 무엇인가?
 tags: [AutoEncoder]
 categories: AutoEncoder
 author: Kimin Park
 comments : True
 ---
 
-## 1. 오토인코더 란?
+## 1. 오토인코더란?
 
 ---
 
@@ -24,7 +24,7 @@ comments : True
 
 ---
 
-그렇다면, 왜 우리는 "Auto Encoder"라고 부르게 되었을까요? 그 이유는 다음 그림을 예시로 들어 설명 드리겠습니다. 
+그렇다면, 왜 우리는 이 모델을 "Auto Encoder"라고 부르게 되었을까요? 그 이유는 다음 그림을 예시로 들어 설명 드리겠습니다. 
 
 <br>
 
