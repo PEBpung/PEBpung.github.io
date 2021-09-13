@@ -51,6 +51,41 @@ Auto Encoder는 다양한 관점에서 해석이 가능합니다. 다시 말해,
 
 <br>
 
+### 3-1. Unsupervised Learning (Feat. Self-Supervised Learning)
+
+<br>
+
+**Supervised learning** 
+
+Unsupervised learning을 보기 전에 먼저 Supervised learning을 간단하게 짚고 넘어 가겠습니다. Supervised learning은 label을 이용해서 모델을 학습하는 방식을 말합니다. 입력 데이터에 대한 출력 값이 무엇인지 대한 사전 지식이 있기 때문에 학습도 쉽습니다. CNN의 학습 순서를 간단히 설명하면 다음과 같습니다. 
+
+<br>
+
+1. Training dataset을 CNN 모델에 입력해 줍니다.
+2. CNN 모델이 입력 이미지에 대해 prediction을 합니다. 이 때, prediction 결과로는 **판단한 클래스**(=Class)와 해당 클래스로 판단 할 때의 **확신 정도**(=Probability)를 출력합니다.
+3. 그리고, prediction 한 결과와 Label을 비교하여 loss를 출력한 후, backpropagation으로 학습을 진행합니다.
+
+<br>
+
+<center><img src="/assets/img/2021-09-11/AutoEncoder-1/Untitled2.png" width='700'></center>
+
+<br>
+
+**Unsupervised learning**
+
+Unsupervised Learning은 데이터 그 자체에 숨겨져 있는 패턴을 발견하는 것이 목표입니다. 가장 큰 특징은 label 데이터가 없이 인공지능 모델을 학습한다는 점입니다. 이는 Supervised learning과 반대되는 개념입니다. 아래와 같이 MNIST의 compressed data(=latent vectors)를 찾기 위해서 사용하는 Auto-Encoder 학습 방식은  Unsupervised learning이라 할 수 있습니다. 따로 label 정보를 지정하지 않았기 때문입니다.
+
+<br>
+
+<center><img src="/assets/img/2021-09-11/AutoEncoder-1/Untitled3.jpg" width='700'></center>
+
+<br>
+
+2018년 이후로는 Unsupervised Learning이라는 용어를 Self-Supervised Learning (SSL) 으로 바꾸어 사용하고 있습니다.  Self-Supervised Learning에 대해서는 추후에 따로 글을 작성하여 링크를 걸어 놓도록 하겠습니다.
+
+
+<br>
+
 ## Reference
 
 [https://videolectures.net/deeplearning2015_vincent_autoencoders/](https://videolectures.net/deeplearning2015_vincent_autoencoders/)
