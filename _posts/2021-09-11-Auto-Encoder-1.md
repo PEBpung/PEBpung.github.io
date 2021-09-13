@@ -53,6 +53,8 @@ Auto Encoder는 다양한 관점에서 해석이 가능합니다. 다시 말해,
 
 ### 3-1. Unsupervised Learning (Feat. Self-Supervised Learning)
 
+---
+
 <br>
 
 **Supervised learning** 
@@ -73,7 +75,7 @@ Unsupervised learning을 보기 전에 먼저 Supervised learning을 간단하�
 
 **Unsupervised learning**
 
-Unsupervised Learning은 데이터 그 자체에 숨겨져 있는 패턴을 발견하는 것이 목표입니다. 가장 큰 특징은 label 데이터가 없이 인공지능 모델을 학습한다는 점입니다. 이는 Supervised learning과 반대되는 개념입니다. 아래와 같이 MNIST의 compressed data(=latent vectors)를 찾기 위해서 사용하는 Auto-Encoder 학습 방식은  Unsupervised learning이라 할 수 있습니다. 따로 label 정보를 지정하지 않았기 때문입니다.
+Unsupervised Learning은 Supervised learning과 다르게 label 데이터가 없이 인공지능 모델을 학습을 합니다. 이를 통해 데이터 그 자체에 **숨겨져 있는 패턴**을 발견하는 것이 목표입니다. 아래와 같이 MNIST 데이터의 **compressed data**(=latent vectors)를 찾기 위해서 사용하는 Auto-Encoder 학습 방식은 **Unsupervised learning**이라고 할 수 있습니다. 따로 label 정보를 지정하지 않았기 때문입니다.
 
 <br>
 
@@ -81,7 +83,7 @@ Unsupervised Learning은 데이터 그 자체에 숨겨져 있는 패턴을 발�
 
 <br>
 
-2018년 이후로는 Unsupervised Learning이라는 용어를 Self-Supervised Learning (SSL) 으로 바꾸어 사용하고 있습니다.  Self-Supervised Learning에 대해서는 추후에 따로 글을 작성하여 링크를 걸어 놓도록 하겠습니다.
+2018년 이후로는 Unsupervised Learning이라는 용어를 **Self-Supervised Learning**(SSL) 으로 바꾸어 사용하고 있습니다.  Self-Supervised Learning에 대해서는 추후에 따로 글을 작성하여 링크를 걸어 놓도록 하겠습니다.
 
 
 <br>
