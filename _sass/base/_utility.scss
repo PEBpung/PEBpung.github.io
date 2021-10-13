@@ -24,6 +24,7 @@
         left: 10px;
         width: 7px;
         height: 7px;
+        margin-top: 10px;
         background-color: $text-gray;
         border-radius: 50%;
     }
@@ -41,7 +42,7 @@
     }
     img {
         max-width : 96%;
-        margin: 2%;
+        margin: 5%;
         box-shadow: 0 0px 6px 1px rgba(0,0,0,0.1);
         &.width-30{
             max-width: 30%;
