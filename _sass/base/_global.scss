@@ -71,7 +71,15 @@ h6 {
 	font-size : 1.05rem;
 }
 p{
-	margin: 5px 0;
+	line-height: 1.9;
+	font-weight: 300;
+	margin-bottom: 20px;
+	padding: 5px;
+	letter-spacing: 0.3px;
+
+	@media (max-width: 576px) {
+        letter-spacing: 0.2px;
+    }
 }
 @media (max-width: 576px){
 	h1 {
