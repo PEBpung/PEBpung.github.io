@@ -72,14 +72,9 @@ h6 {
 }
 p{
 	line-height: 1.9;
-	font-weight: 600;
 	margin-bottom: 20px;
 	padding: 5px;
 	letter-spacing: 0.3px;
-
-	@media (max-width: 576px) {
-        letter-spacing: 0.2px;
-    }
 }
 @media (max-width: 576px){
 	h1 {
@@ -102,6 +97,7 @@ p{
 	}
 	p{
 		font-size : 0.9rem;
+		letter-spacing: 0.2px;
 	}
 }
 ol, ul {
