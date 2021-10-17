@@ -66,9 +66,8 @@
 }
 
 .more-posts {
+    @extend %page-padding;
     border: 1px solid #E5E5E5;
-    padding: 10px 10px 5px;
-    margin: 100px 166.5px;
     @media (max-width: 991px) {
       margin: 10%;
     }
