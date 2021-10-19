@@ -60,6 +60,7 @@
 
 #comments{
     @extend %page-padding;
+    padding: 0px 15px !important;
     div.border{
         border-top: 1px solid #e7e9ee;
     }
