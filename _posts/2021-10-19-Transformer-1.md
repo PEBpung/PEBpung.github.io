@@ -95,21 +95,26 @@ Attention은 기존의 seq2seq의 단점을 해결하기 위해 등장했어요.
 
 정보 소실과 기울기 소실, 이 두가지 문제는 모델의 성능에 치명적인 문제를 가져오게 됩니다. 이를 해결하기 위해 Attention 구조가 나오게 되요.
 
-
-
 <figure>
-    <center><img src="/assets/image-20211019222437830.png" alt="image-20211019222437830" style="zoom:67%;" /></center>
+    <center><img src="/assets/img/2021-10-10/image-20211019213213407.png" alt="image-20211019222437830" style="zoom:67%;" /></center>
     <center><figcaption> 그림 2. Attention 모델 구조 </figcaption></center>
 </figure>
+
 
 그림 1과는 다르게 Attention 모델은 각 cell의 hidden state를 모두 사용해서 Context vector를 생성해요. 기존의 seq2seq는 한개의 Context vector를 사용해서 크기를 고정하는 반면에, 모든 hidden state 값을 반영하기 때문에 더 유동적으로 사용할 수 있어요!
 
 그런데 그림2에서 생략된 부분이 무엇인지 궁금하실 거예요. LSTM 모델에서 나온 hidden state 값을 단순히 더해서 Context vector가 추출되는 건 아닙니다.  생략된 곳에서는 어떤 일이 일어나는 지 같이 살펴볼게요.
 
 
+
+<br>
+
+
+
+
 ### Context vector가 만들어지는 과정
 
-
+![attention](/assets/img/2021-10-10/attention.gif)
 
 <br>
 
