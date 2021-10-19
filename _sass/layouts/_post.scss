@@ -60,7 +60,6 @@
 
 #comments{
     @extend %page-padding;
-    padding: 0px 15px !important;
     div.border{
         border-top: 1px solid #e7e9ee;
     }
@@ -68,6 +67,7 @@
 
 .more-posts {
     @extend %page-padding;
+    padding: 0px 15px !important;
     border: 1px solid #E5E5E5;
     @media (max-width: 991px) {
       margin: 10%;
