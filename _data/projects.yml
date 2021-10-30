@@ -1,6 +1,42 @@
 - project : 
     print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'. 
     modal : True # If 'True' is selected, modal can open in 'portfolio.html'. 
+    url : https://github.com/PEBpung/Pytorch_MLOps-1/tree/main
+    image : covid-0.png
+    date : 2021.9.12 - Medical classification
+    title : COVID-19 영상 분류 프로젝트
+    summary : Self-Supervised Learning을 활용한 COVID-19 이미지 classification 프로젝트
+    description : L.POINT(롯데포인트)에서 제공한 온라인 쇼핑 구매 데이터를 활용해서 추천 시스템을 개발하였다.
+    contents :
+        - title : 1. 데이터셋
+          image : covid-1.png
+          description : 
+            <li>SIIM-FISABIO-RSNA COVID-19 Detection을 활용</li>
+            <li>Typical appearance 일반적으로 보고되는 COVID-19 환자의 영상</li> 
+            <li>Indeterminate appearance 비특이적 특징을 가지고 있는 COVID-19 환자의 영상</li> 
+            <li>Atypical appearance 흔하지 않거나 보고되지 않은 COVID-19 환자의 영상</li> 
+            <li>Negative for pneumonia 폐렴의 특징이 없는 환자의 영상</li>
+            <li>의료 데이터이기 때문에 이미지가 png 파일이 아니라 다이콤 파일.</li>
+
+        - title : 2. 담당한 역할
+          image : covid-2.png
+          description : 
+            <li>WandB 를 활용해서 Hyper parameter search 하기</li> 
+            <li>Classification을 위한 Baseline Code를 Pytorch로 구현</li> 
+            <li>massive한 실험을 위한 design 세팅</li> 
+
+        - title : 3. 깨달은 점
+          image : covid-3.png
+          description : 
+            <li>Wide Deep Model 적용</li>
+            <li>의료영상은 보통 dcm format으로 되어 있지만, 촬영 기기에 따라 비트수가 다름.</li>
+            <li>MLops flatform(WandB)를 사용하면 실험 시간을 굉장히 단축할 수 있음.</li>
+            <li>Mixed Precision 기법을 사용해서 training 시간을 획기적으로 줄임.</li>
+            <li>Bayesian search 방식이 grid와 random search에 비해 효율적임. </li> 
+
+- project : 
+    print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'. 
+    modal : True # If 'True' is selected, modal can open in 'portfolio.html'. 
     url : https://github.com/PEBpung/Lpoint-Hackathon
     image : Lpoint.jpg 
     date : 2020.12.23 - Recommender System
