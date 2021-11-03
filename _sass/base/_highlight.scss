@@ -15,17 +15,15 @@ $dt-green-light: rgb(172, 229, 145);
 .highlight pre { 
     margin-bottom:1.0rem !important;
     margin-top:1.5rem !important;
-    padding-bottom:0 !important;
-    padding-top:0 !important;
     background: #323443 !important;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace;
     border-radius: 5px;
     font-size: 95%;
-    padding: 8px 12px;
+    padding: 20px 20px;
     overflow-x: auto;
-    border: 2px solid #e8e8e8;
+    border: 0px solid #e8e8e8;
     // margin : 10px 0;
     // * {font-size:0.9rem;
     // }
