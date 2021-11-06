@@ -11,22 +11,26 @@ theme_settings :
   profile :
     image : assets/img/myProfile.JPG
     username : pebpung
-    description : 코딩과 개발을 좋아하고 딥러닝 엔지니어를 꿈꾸고 있습니다.
+    description : 코딩과 개발을 좋아하고 AI Researcher를 꿈꾸고 있습니다.
     experience :
+      - start : 2021-06-16
+        end : 2021-12-16
+        experience : Aiffel 강남 2기, 퍼실리테이터
       - start : 2020-07-23
         end : 2020-12-23
-        experience : Aiffel 강남, 영상처리
+        experience : Aiffel 강남 1기, 영상처리 교육 이수
+      
     skills :
-      - skill : Deep learning
+      - skill : Pytorch
         value : 70  # Percent value
       - skill : Python 
         value : 60  
-      - skill : Machine learning
+      - skill : Tensorflow
         value : 50  
 
   # Icons
   icons :
-    email: "mcuwwa29@google.com"
+    email: "mcuwwa29@gmail.com"
     linkedin:  # Full URL
     github: PEBpung
     gitlab:
