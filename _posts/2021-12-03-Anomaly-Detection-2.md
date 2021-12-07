@@ -7,17 +7,12 @@ categories: Anomaly Detection
 author: Kimin Park
 comments : True
 typora-root-url: ../
-
-
+use_math: true
 ---
 
+> Deep Anomaly Detection with Outlier Exposure 논문을 읽고 정리한 포스트입니다. 
 
-
-# Deep Anomaly Detection with Outlier Exposure
-
-
-
-
+<br>
 
 ## Introduction
 
