@@ -23,7 +23,7 @@ use_math: true
 
 Registration은 다른 각도나 크기, 위치에 있는 두 영상을 매칭 시켜주는 영상 정합을 말합니다. 우선 두 영상 간의 매칭점을 찾아 주고, 매칭점을 바탕으로 Transformation Matrix를 예측해줍니다. 이렇게 예측된 Matrix는 영상을 변환시켜줄 때 사용됩니다. 
 
-Registration은 Medical 분야에서 많이 사용이 됩니다. 전통적으로 Transformation matrix가 있습니다. Registration을 위한 matrix를 찾아서 변환을 시켜줍니다. 매칭점을 찾기 위해서 사용되는 방법은 iteration closest point(ICP)가 있습니다. 이 알고리즘은 자율주행을 위한 SLAM의 핵심 기술이기도 합니다. 여기서 Rigid , Affine  혹은 Non-Rigid 변환 중에서 상황에 따라 사용할 수 있습니다. 
+Registration은 Medical 분야에서 많이 사용이 됩니다. 전통적으로 Transformation matrix이용한 registration 기법을 사용했습니다. 이동, 크기, 회전 등 기능을 수행하는 matrix를 찾아서 변환을 시켜줍니다. 변환의 기준이 되는 매칭점을 찾기 위해서 사용되는 방법으로는 iteration closest point(ICP)가 있습니다. 이 알고리즘은 자율주행을 위한 SLAM의 핵심 기술이기도 합니다. 여기서 Rigid , Affine  혹은 Non-Rigid 변환 중에서 매칭점을 잘 정합할 수 있는 방법에 따라 사용이 됩니다. 
 
 보통 두 영상에서 움직이는 영상을 Moving, Source image라고 부르고, 고정된 영상은 Fixed, Target, Reference image라고 부릅니다. 또한 Registration이 완료된 이미지는 Moved, Result, Transformed image로 쓰여집니다. 
 
@@ -37,11 +37,11 @@ Medical 분야에서 Registration을 사용하는 이유는 크게 세가지로 
 2. 동일한 환자, 다른 모달
 3. 다른 환자, 동일한 모달
 
-동일한 환자, 동일한 모달의 경우 과거와 현재 영상을 비교하기 위해서 registration을 사용합니다. 시간의 흐름에 따라서 환자의 뇌 영상에 어떤 변화가 있는지 파악하고 싶지만, 위치와 크기가 다른 이미지는 비교가 힘들게 됩니다. 그렇기 때문에 registration을 사용해서 비교의 용이성을 가져오게 됩니다. 
+**동일한 환자, 동일한 모달**의 경우 과거와 현재 영상을 비교하기 위해서 registration을 사용합니다. 시간의 흐름에 따라서 환자의 뇌 영상에 어떤 변화가 있는지 파악하고 싶지만, 위치와 크기가 다른 이미지는 비교가 힘들게 됩니다. 이때 registration을 사용하면 과거와 현재 영상을 비교해서 분석하기가 쉬워집니다.  
 
 ![Axial view of T1, T1ce, T2 and Flair.](/assets/img/2022/Axial-view-of-T1-T1ce-T2-and-Flair.png)
 
-동일한 환자, 다른 모달의 경우 좀 더 풍부한 정보를 얻기 위해서 registration을 사용합니다. 예를 들어 딥러닝으로 뇌의 병변을 파악하기 위해서는 동일한 타입의 영상이 아니라 다양한 타입의 영상을 같이 사용하는 것이 좋습니다. 위에서는 4개의 모달이 주어져있습니다. 하지만, 서로 다른 모달의 모양은 조금씩 다를 수 있습니다. 그렇기 때문에 모델의 입력으로 들어가기 전에 registration을 통해서 정합하는 과정이 필요합니다. 
+**동일한 환자, 다른 모달**의 경우 좀 더 풍부한 정보를 얻기 위해서 registration을 사용합니다. 예를 들어 딥러닝으로 뇌의 병변을 파악하기 위해서는 동일한 모달의 영상이 아니라 다양한 모달의 영상을 같이 사용하는 것이 좋습니다. 위에서는 4개의 모달이 주어져있습니다. 하지만, 서로 다른 모달의 모양은 조금씩 다를 수 있습니다. 그렇기 때문에 모델의 입력으로 들어가기 전에 registration을 통해서 정합하는 과정이 필요합니다. 
 
 
 
@@ -49,7 +49,7 @@ Medical 분야에서 Registration을 사용하는 이유는 크게 세가지로 
 
 
 
-다른 환자, 동일한 모달의 경우 label fusion을 위해서 registration을 사용합니다. Label fusion이란 기존에 존재하는 label(segmentation mask) 정보를 활용해서 label이 없는 새로운 영상에 label을 해주는 기법입니다. medical 이미지 처럼 큰 변화가 없는 영상에서 주로 사용 됩니다. Medical 이미지의 경우 annotation을 수행하려면 많은 비용이 들게 됩니다. 여기서 registration을 사용해서 자동으로 annotion을 수행하면 비용 절감 효과가 있습니다.  
+**다른 환자, 동일한 모달**의 경우 label fusion을 위해서 registration을 사용합니다. Label fusion이란 기존에 존재하는 label(segmentation mask) 정보를 활용해서 label이 없는 새로운 영상에 label을 해주는 기법입니다. medical 이미지 처럼 큰 변화가 없는 영상에서 주로 사용 됩니다. Medical 이미지의 경우 annotation을 수행하려면 많은 비용이 들게 됩니다. 여기서 registration을 사용해서 자동으로 annotion을 수행하면 비용 절감 효과가 있습니다.  
 
 <br>
 
