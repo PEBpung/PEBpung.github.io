@@ -11,7 +11,7 @@ use_math: true
 
 ---
 
-> VoxelMorph: A Learning Framework for Deformable Medical Image Registration 논문을 읽고 정리한 글입니다. 
+> VoxelMorph: A Learning Framework for Deformable Medical Image Registration 논문을 읽고 정리한 글입니다.  
 
 <br>
 
@@ -51,6 +51,4 @@ Supervised learning의 특성상 ground truth 정보가 필요합니다. 하지�
 
 <img src="/assets/img/2022/voxelmorph.png" alt="voxelmorph" style="zoom: 67%;" />
 
-
-
-(작성 예정)
+입력으로 들어가기 전에 Moving 3D image와 Fixed 3D image는 affine alignment를 수행한다. 그 후에 두개의 input을 Unet에 misalignment가 nonlinear하다고 가정하고 들어간다. 
