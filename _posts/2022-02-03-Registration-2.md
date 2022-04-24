@@ -51,4 +51,33 @@ Supervised learning의 특성상 ground truth 정보가 필요합니다. 하지�
 
 <img src="/assets/img/2022/voxelmorph.png" alt="voxelmorph" style="zoom: 67%;" />
 
-입력으로 들어가기 전에 Moving 3D image와 Fixed 3D image는 affine alignment를 수행한다. 그 후에 두개의 input을 Unet에 misalignment가 nonlinear하다고 가정하고 들어간다. 
+VoxelMorph에 대한 내용을 하나씩 살펴보도록 하겠습니다. 우선 입력으로는 Moving 3D image와 Fixed 3D image가 있어야 합니다. 이 두개의 이미지는 미리 affine alignment를 수행해야 합니다. 그 후에 두개의 input을 Unet으로 넣어주게 됩니다. 
+
+### VoxelMorph를 사용하는 이유
+
+VoxelMorph 이전에도 ANTs모듈의 SyN을 사용해서 Non-rigid Registration을 수행했습니다. 하지만 기존의 Non-rigid Registration 방식은 뒤틀려져 있는 기하학적인 변화를 계산하기에 굉장히 많은 시간이 걸립니다.
+
+![img](/assets/img/2022/https%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F39b698ee-6aad-478b-b23f-85a0f77f9b33%252FUntitled.png)
+
+위의 표를 보게 되면 ANTs모듈의 SyN의 경우 CPU에서 9059s 즉, 2시간 반 정도의 시간이 소모됩니다. 이에 반해서 VoxelMorph는 성능은 비슷하지만 57초로 매우 빠른 성능을 보여주고 있습니다.
+
+### VoxelMorph를 사용해서 Parcellation 수행
+
+Registration를 사용해서 Parcellation을 하는 방식은 기존 Segmentation 방법론과는 전혀 다른 방식입니다. Segmentation을 사용할 때는 [위에서 드린 설명](https://www.notion.so/VoxelMorph-09e80ca725d04249bebd787f1998a8f2)과 같이 입력을 넣으면 픽셀 단위로 인식하는 단계가 필요합니다. 하지만 Registration은 픽셀 단위로 인식 하는 단계 없이, 기존 Segmentation Mask정보를 변형해서 원하는 작업을 수행하겠다는 것입니다.
+
+![img](/assets/img/2022/https%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Fc5c3ca20-ad28-40d9-9fb6-5fe2b76f0e04%252FUntitled.png)
+
+위의 예시로 설명 드리겠습니다.  Moving image인 *y*1과 Segmentation mask  *z*1이 입력 되었다고 가정하면, *y*1을 Fixed image인 *x*와 registration(정합)될 수 있는 하는 registration field *T*를 계산합니다.
+
+여기서 Moving image란 Fixed image와 비슷한 형태로 변형이 되는 대상입니다.
+
+그리고 *y*1의 Segmentation mask *z*1에 *T*를 적용해서 *x*의 Segmentation mask *T*(*z*1)을 얻게됩니다. 이렇게 되면 기존 *y*1의 정보 만으로 x의 마스크 정보를 얻을 수 있는 것입니다.
+
+
+![img](/assets/img/2022/https%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Ffcfc6a45-f6e1-472b-90b2-b58cf07a8256%252FUntitled.png)
+
+VoxelMorph 방식도 이와 유사합니다. Moving 3D image인 m, Segmentation mask 정보인 Sm, Fixed 3D image인 f가 주어져 있습니다. 여기서 M**oving 3D image인 m을 Fixed 3D image인 f로 정합하는 Registration field 찾는 것**이 VoxelMorph를 이용한 Parcellation 방식의 핵심입니다. 이렇게 찾은 Registration field를 사용해서 m의 Segmentation mask 정보인 Sm을 Fixed 3D image f의 Segmentation mask로 변형시켜야 되기 때문입니다.
+
+![img](/assets/img/2022/https%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F320f9136-e8fd-42d6-a304-96dc2fc97e9e%252FUntitled.png)
+
+즉, 위와 같이 파란색 박스의 정보를 얻게 되면 Moved Segmentation 정보를 Fixed 3D image f의 Segmentation Mask로 활용할 수 있게 됩니다.
