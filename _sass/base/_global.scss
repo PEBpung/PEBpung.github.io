@@ -141,10 +141,10 @@ a:link, a:visited, a:active, a:hover {
 	display: none;
 }
 .highlighter-rouge {
-    font-size: 0rem;
-    color: $theme-bright;
-    background-color: $dt-code-cell-background;
+    color: $dt-code-cell-background;
+    background-color: $theme-bright;
     padding: .1em .5em;
+	font-weight: 600;
     border-radius: 3px;
 }
 .tag {
