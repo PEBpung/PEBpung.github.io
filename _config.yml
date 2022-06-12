@@ -1,37 +1,37 @@
 # Site Settings
 baseurl: ""
-url : "https://pebpung.github.io"
+url: "https://pebpung.github.io"
 
 # Blog Settings
-theme_settings :
-  title : ML감자
-  favicon : assets/red.ico
+theme_settings:
+  title: ML감자
+  favicon: assets/red.ico
 
   # Profile Settings
-  profile :
-    image : assets/img/myProfile.JPG
-    username : pebpung
-    description : 코딩과 개발을 좋아하고 AI Researcher를 꿈꾸고 있습니다.
-    experience :
-      - start : 2021-06-16
-        end : 2021-12-16
-        experience : Aiffel 강남 2기, 퍼실리테이터
-      - start : 2020-07-23
-        end : 2020-12-23
-        experience : Aiffel 강남 1기, 영상처리 교육 이수
-      
-    skills :
-      - skill : Pytorch
-        value : 70  # Percent value
-      - skill : Python 
-        value : 60  
-      - skill : Tensorflow
-        value : 50  
+  profile:
+    image: assets/img/myProfile.JPG
+    username: pebpung
+    description: 코딩과 개발을 좋아하고 AI Researcher를 꿈꾸고 있습니다.
+    experience:
+      - start: 2021-06-16
+        end: 2021-12-16
+        experience: Aiffel 강남 2기, 퍼실리테이터
+      - start: 2020-07-23
+        end: 2020-12-23
+        experience: Aiffel 강남 1기, 영상처리 교육 이수
+
+    skills:
+      - skill: Pytorch
+        value: 70 # Percent value
+      - skill: Python
+        value: 60
+      - skill: Tensorflow
+        value: 50
 
   # Icons
-  icons :
+  icons:
     email: "mcuwwa29@gmail.com"
-    linkedin:  # Full URL
+    linkedin: # Full URL
     github: PEBpung
     gitlab:
     bitbucket:
@@ -42,7 +42,7 @@ theme_settings :
     instagram:
 
   # Disqus
-  disqus_shortname : pebpung-github-io
+  disqus_shortname: pebpung-github-io
 
 # Pagination
 paginate: 6
@@ -60,14 +60,7 @@ bootstrap:
 # Google plugin
 plugins:
   google-analytics:
-      tracking_id: UA-174230337-1
-
-# Math equation
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
+    tracking_id: UA-174230337-1
 
 # Category
 category_dir: category/
@@ -75,7 +68,6 @@ tag_dir: tag/
 
 # Conversion
 markdown: kramdown
-highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
