@@ -3,7 +3,7 @@ $dt-code-cell-background: #323443;
 $dt-gray: #44475a;       // Current Line & Selection
 $dt-gray-light: #f8f8f2; // Foreground
 $dt-blue: #6272a4;       // Comment
-$dt-cyan: #8be9fd;
+$dt-cyan: #594b92;
 $dt-green: #50fa7b;
 $dt-orange: #ffb86c;
 $dt-pink: #ff79c6;
@@ -11,11 +11,12 @@ $dt-purple: #bd93f9;
 $dt-red: #ff5555;
 $dt-yellow: #f1fa8c;
 $dt-green-light: rgb(172, 229, 145);
+$dt-gray-code: #f3f3f3;
 
 .highlight pre { 
     margin-bottom:1.0rem !important;
     margin-top:1.5rem !important;
-    background: #323443 !important;
+    background: $dt-gray-code !important;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace;
@@ -96,8 +97,7 @@ $dt-green-light: rgb(172, 229, 145);
     background: $dt-code-cell-background !important;
     color: $dt-gray-light !important;
     pre, code {
-     background: $dt-code-cell-background;
-     color: $dt-gray-light;
+     color: $dt-gray-dark;
      font-size: 95%;
     }
    
@@ -159,10 +159,7 @@ $dt-green-light: rgb(172, 229, 145);
     .ge {
       text-decoration: underline;
     }
-  
-    .bp {
-      font-style: italic;
-    }
+
   
     .c,
     .ch,
@@ -189,9 +186,7 @@ $dt-green-light: rgb(172, 229, 145);
     }
   
     .kd,
-    .nb,
     .nl,
-    .nv,
     .vc,
     .vg,
     .vi,
@@ -216,7 +211,7 @@ $dt-green-light: rgb(172, 229, 145);
     .kr,
     .nt,
     .ow {
-      color: $dt-pink;
+      color: $dt-gray-dark;
     }
  
     .kc {
