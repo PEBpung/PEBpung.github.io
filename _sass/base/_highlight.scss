@@ -123,33 +123,33 @@ $dt-gray-code: #f3f3f3;
       color: $dt-gray;
     }
   
-    .err,
-    .g,
-    .l,
-    .n,
-    .x,
-    .ge,
-    .gr,
-    .gh,
-    .gi,
-    .gp,
-    .gs,
-    .gu,
-    .gt,
-    .ld,
-    .no,
-    .nd,
-    .pi,
-    .ni,
-    .ne,
-    .nn,
-    .nx,
-    .py,
-    .w,
-    .bp {
-      color: $dt-gray-light;
-      background-color: $dt-code-cell-background !important;
-    }
+    // .err,
+    // .g,
+    // .l,
+    // .n,
+    // .x,
+    // .ge,
+    // .gr,
+    // .gh,
+    // .gi,
+    // .gp,
+    // .gs,
+    // .gu,
+    // .gt,
+    // .ld,
+    // .no,
+    // .nd,
+    // .pi,
+    // .ni,
+    // .ne,
+    // .nn,
+    // .nx,
+    // .py,
+    // .w,
+    // .bp {
+    //   color: $dt-gray-light;
+    //   background-color: $dt-code-cell-background !important;
+    // }
  
     .p {
          font-weight: bold;
