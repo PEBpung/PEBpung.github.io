@@ -1,6 +1,7 @@
 # Site Settings
 baseurl: ""
 url: "https://pebpung.github.io"
+future: true
 
 # Blog Settings
 theme_settings:
@@ -25,9 +26,9 @@ theme_settings:
     skills:
       - skill: Pytorch
         value: 90 # Percent value
-      - skill: Bentoml 
+      - skill: Bentoml
         value: 70
-      - skill: MLflow 
+      - skill: MLflow
         value: 60
 
   # Icons
