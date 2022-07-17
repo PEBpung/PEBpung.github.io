@@ -9,10 +9,12 @@ theme_settings:
 
   # Profile Settings
   profile:
-    image: assets/img/myProfile.JPG
+    image: assets/img/profile/ocean.jpeg
     username: pebpung
-    description: 코딩과 개발을 좋아하고 AI Researcher를 꿈꾸고 있습니다.
+    description: Medical AI Research Engineer at Tesser
     experience:
+      - start: 2021-12-17
+        experience: Tesser, Medical AI Research
       - start: 2021-06-16
         end: 2021-12-16
         experience: Aiffel 강남 2기, 퍼실리테이터
@@ -22,11 +24,11 @@ theme_settings:
 
     skills:
       - skill: Pytorch
-        value: 70 # Percent value
-      - skill: Python
+        value: 90 # Percent value
+      - skill: Bentoml 
+        value: 70
+      - skill: MLflow 
         value: 60
-      - skill: Tensorflow
-        value: 50
 
   # Icons
   icons:
