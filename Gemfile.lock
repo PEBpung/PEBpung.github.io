@@ -1,9 +1,3 @@
-PATH
-  remote: .
-  specs:
-    grape-theme (0.1.0)
-      jekyll (~> 3.8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -218,7 +212,6 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (3.1.1)
-    rake (12.3.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -249,11 +242,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.0)
   github-pages
-  grape-theme!
   jekyll-paginate
-  rake (~> 12.0)
 
 BUNDLED WITH
    2.1.4
