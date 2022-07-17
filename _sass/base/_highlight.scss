@@ -12,6 +12,9 @@ $dt-red: #ff5555;
 $dt-yellow: #f1fa8c;
 $dt-green-light: rgb(172, 229, 145);
 $dt-gray-code: #f3f3f3;
+$dt-deep-brown: #a85252;
+$dt-deep-purple: #7d37b1;
+$dt-deep-red: #a30930;
 
 .highlight pre { 
     margin-bottom:1.0rem !important;
@@ -34,7 +37,6 @@ $dt-gray-code: #f3f3f3;
 .hll { background-color: #ffffcc }
 .c { color: #a9a8a3; font-style: normal } /* Comment */
 .err { color: #a61717; background-color: #e3d2d2 } /* Error */
-.k { color: #000000; font-weight: bold } /* Keyword */
 .o { color: #000000; font-weight: bold } /* Operator */
 .cm { color: #c1bb9d; font-style: italic } /* Comment.Multiline */
 .cp { color: #999999; font-weight: bold; font-style: italic } /* Comment.Preproc */
@@ -102,7 +104,6 @@ $dt-gray-code: #f3f3f3;
     }
    
     .hll,
-    .s,
     .sa,
     .sb,
     .sc,
@@ -117,6 +118,10 @@ $dt-gray-code: #f3f3f3;
     .s1,
     .ss {
          color:rgb(231, 153, 122);
+    }
+
+    .s {
+      color: $dt-deep-red;
     }
   
     .go {
@@ -153,7 +158,7 @@ $dt-gray-code: #f3f3f3;
  
     .p {
          font-weight: bold;
-         color: rgb(102, 217, 239);
+         color: $dt-gray-dark;
  }
   
     .ge {
@@ -195,21 +200,31 @@ $dt-gray-code: #f3f3f3;
   
     .fm,
     .na,
-    .nc,
-    .nf
+    .nc
      {
       color: $dt-green-light;
     }
+
+    .nf {
+      color: $dt-deep-purple;
+    }
   
-    .k,
     .cp,
     .kc,
-    .kn,
     .kp,
     .kr,
     .nt,
     .ow {
       color: $dt-gray-dark;
+    }
+
+    .k {
+      color: $dt-deep-brown;
+      font-weight: 500;
+    }
+
+    .kn {
+      color: $dt-deep-brown;
     }
 
     .o {
