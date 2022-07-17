@@ -34,7 +34,7 @@ theme_settings:
   # Icons
   icons:
     email: "mcuwwa29@gmail.com"
-    linkedin: # Full URL
+    linkedin: https://www.linkedin.com/in/%EA%B8%B0%EB%AF%BC-%EB%B0%95-976b07197/
     github: PEBpung
     gitlab:
     bitbucket:
@@ -42,7 +42,7 @@ theme_settings:
     twitter:
     youtube:
     facebook:
-    instagram:
+    instagram: dailflow
 
   # Disqus
   disqus_shortname: pebpung-github-io
