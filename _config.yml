@@ -42,7 +42,7 @@ theme_settings:
     twitter:
     youtube:
     facebook:
-    instagram: dailflow
+    instagram:
 
   # Disqus
   disqus_shortname: pebpung-github-io
