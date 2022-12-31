@@ -2,7 +2,7 @@
 layout: post
 title: "1.오토인코더(AutoEncoder)"
 subtitle: 오토인코더란 무엇인가?
-tags: [AutoEncoder]
+tags: [AI]
 categories: AutoEncoder
 author: Kimin Park
 comments: True

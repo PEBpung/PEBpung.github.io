@@ -2,7 +2,7 @@
 layout: post
 title: "GANomaly: Semi-Supervised Anomaly Detection via Adversarial Training"
 subtitle : Anomaly Detection 파헤치기
-tags: [Anomaly Detection]
+tags: [AI]
 categories: Anomaly Detection
 author: Kimin Park
 comments : True

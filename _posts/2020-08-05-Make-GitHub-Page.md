@@ -2,9 +2,10 @@
 layout: post
 title: "GitHub 블로그 시작하기 (GitHub Page, Jekyll)"
 subtitle : How to start the blog in GitHub
-tags: [Ubuntu]
+tags: [Engineering]
 author: Kimin Park
 comments : True
+typora-root-url: ../
 ---
 
 깃헙에는 .github.io라는 독특한 주소를 가지고 있는 블로그가 있습니다.

@@ -2,7 +2,7 @@
 layout: post
 title: "VoxelMorph: A Learning Framework for Deformable Medical Image Registration 논문 리뷰"
 subtitle : VoxelMorph
-tags: [Registration, Paper Review]
+tags: [Medical, AI]
 categories: Registration
 author: Pebpung
 comments : True

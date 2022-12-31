@@ -2,7 +2,7 @@
 layout: post
 title: "2022년 회고: 밀도있는 성장"
 subtitle: 한 해를 마무리하며 작성한 글입니다. 
-tags: [회고]
+tags: [Experience]
 categories: Engineering
 author: Pebpung
 comments: True

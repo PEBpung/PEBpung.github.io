@@ -2,9 +2,10 @@
 layout: post
 title: "Ubuntu 18.04 테마 변경하기"
 subtitle : How Ubuntu theme is changed as Adapta
-tags: [Ubuntu]
+tags: [Engineering]
 author: Kimin Park
 comments : True
+typora-root-url: ../
 ---
 
 

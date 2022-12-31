@@ -2,7 +2,7 @@
 layout: post
 title: "Medical Image Registration 알아보기"
 subtitle : Medical Image
-tags: [Registration]
+tags: [Medical, AI]
 categories: Registration
 author: Pebpung
 comments : True

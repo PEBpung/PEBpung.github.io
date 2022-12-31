@@ -2,7 +2,7 @@
 layout: post
 title: "어텐션 메커니즘 (Attention Mechanism)"
 subtitle : Transformer-1
-tags: [Transformer]
+tags: [AI]
 categories: Transformer
 author: Kimin Park
 comments : True

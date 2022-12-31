@@ -2,7 +2,7 @@
 layout: post
 title: "Google Cloud Vision API 사용하기"
 subtitle : Cloud Vision API
-tags: [Google]
+tags: [AI]
 categories: API
 author: Kimin Park
 comments : True
