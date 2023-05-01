@@ -83,8 +83,6 @@ h6 {
 	font-size : 1.05rem;
 }
 p{
-	font-size: 100%;
-    line-height: 1.9;
     margin-bottom: 10px;
     letter-spacing: 0.1px;
     padding-bottom: 5px;
@@ -118,14 +116,10 @@ blockquote{
 		letter-spacing: 0.2px;
 	}
 }
-ol, ul {
-	li { 
-		font-size: 15px; 
-		line-height: 1.9em;
-	}
-}
-em {
-	font-size: 15px;
+em, ol, ul, li, p {
+	font-size: 1.02rem;
+	line-height: 1.6em;
+	font-weight: 500;
 }
 
 a:link, a:visited, a:active, a:hover {
