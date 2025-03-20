@@ -12,10 +12,13 @@ theme_settings:
   profile:
     image: assets/img/profile/ocean.jpeg
     username: pebpung
-    description: Medical AI Research Engineer at Tesser
+    description: AI Engineer at BHSN
     experience:
+      - start: 2025-03-10
+        experience: BHSN, AI Engineer | LLM, NLP, Legal
       - start: 2021-12-17
-        experience: Tesser, Medical AI Research
+        end: 2025-03-07
+        experience: Tesser, AI Engineer | LLM, RAG, Medical
       - start: 2021-06-16
         end: 2021-12-16
         experience: Aiffel 강남 2기, 퍼실리테이터
@@ -24,11 +27,19 @@ theme_settings:
         experience: Aiffel 강남 1기, 영상처리 교육 이수
 
     skills:
-      - skill: Pytorch
+      - skill: FastAPI
         value: 90 # Percent value
-      - skill: Bentoml
+      - skill: LLM
+        value: 80
+      - skill: RAG
         value: 70
-      - skill: MLflow
+      - skill: Embedding
+        value: 60
+      - skill: Python
+        value: 80
+      - skill: Pytorch
+        value: 70
+      - skill: GCP
         value: 60
 
   # Icons
