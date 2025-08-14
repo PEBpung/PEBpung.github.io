@@ -1,4 +1,1 @@
----
-layout: null
----
 google.com, pub-2853897577129853, DIRECT, f08c47fec0942fa0
