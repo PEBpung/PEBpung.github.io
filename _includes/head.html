@@ -15,10 +15,6 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-  <!-- google addsense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853897577129853"
-     crossorigin="anonymous"></script>
-
   <!-- OG Tag -->
   {% if page.title %}
   {% assign title = page.title | append: " · " | append: site.theme_settings.title %}
@@ -27,7 +23,7 @@
   {% endif %}
 
   {% if page.use_math %}
-    {% include mathjax_support.html %}
+  {% include mathjax_support.html %}
   {% endif %}
 
   <meta name="title" content="{{ title }}" />

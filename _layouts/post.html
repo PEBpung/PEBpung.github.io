@@ -12,6 +12,16 @@ layout: page
   <section class="post-content">
     {{ content }}
   </section>
+  <!-- Google Ads -->
+  <div class="adsbygoogle">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853897577129853"
+      crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article"
+      data-ad-format="fluid" data-ad-client="ca-pub-2853897577129853" data-ad-slot="9024808230"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 </div>
 
 <div id="top" class="top-btn" onclick="moveTop()">
@@ -22,28 +32,36 @@ layout: page
 <!-- Category -->
 <div class="more-posts">
   <div class="more-category">
-    <h4> {{page.categories}} 카테고리의 다른 글  ✏️</h4>
+    <h4> {{page.categories}} 카테고리의 다른 글 ✏️</h4>
     <a href="{{ site.url }}/tags" class="more-button"> ➕ 더보기</a>
   </div>
   <table>
     <tbody>
       {% assign count = 0 %}
       {% for post in site.posts %}
-        {% if post.categories == page.categories %}
-          {% assign count = count | plus: 1 %}
-          {% if count < 8 %}
-            <tr>
-              <th class="more-posts-title">
-                <a href="{{ site.url }}{{ post.url | relative_url }}" class="more-title">{{ post.title }}</a>
-              </th>
-              <td class="more-posts-date">{{ post.date | date: '%Y. %m. %d' }}</td>
-            </tr>
-          {% endif %}
+      {% if post.categories == page.categories %}
+      {% assign count = count | plus: 1 %}
+      {% if count < 8 %} <tr>
+        <th class="more-posts-title">
+          <a href="{{ site.url }}{{ post.url | relative_url }}" class="more-title">{{ post.title }}</a>
+        </th>
+        <td class="more-posts-date">{{ post.date | date: '%Y. %m. %d' }}</td>
+        </tr>
         {% endif %}
-      {% endfor %}
+        {% endif %}
+        {% endfor %}
     </tbody>
   </table>
 </div>
+
+<!-- Google Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853897577129853"
+  crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid"
+  data-ad-client="ca-pub-2853897577129853" data-ad-slot="9024808230"></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <!-- Disqus -->
 {% if site.theme_settings.disqus_shortname and page.comments %}
