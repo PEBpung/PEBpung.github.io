@@ -18,7 +18,7 @@ use_math: true
 
 - LCLM의 성능을 높이기 위해서는 Training 단계에서 고품질의 장문 데이터 확보 전략이 중요함
 
-- 여기에는 Data Strategies에는 Data Filtering, Mixture, 그리고 합성 데이터를 생성하는 Synthesis 기술들이 포함됨
+- 여기서 Data Strategies에는 Data Filtering, Mixture, 그리고 합성 데이터를 생성하는 Synthesis 기술들이 포함됨
 
 - 특히 "lost-in-the-middle" 문제 해결과 Long Context DPO 학습을 위한 데이터 합성 기술이 주목받고 있음
 
@@ -29,9 +29,9 @@ use_math: true
 
 # Overview
 
-요즘 업무를 하면서 Long Context에서 LLM 성능을 높이는 방법에 대한 필요성을 느끼고 있다.
+최근 업무를 하면서 Long Context에서 LLM 성능을 높이는 방법에 대한 필요성을 느끼고 있다.
 
-여러 문서를 입력으로 넣고 쿼리를 날렸을 때 정확하게 원하는 답변을 받거나, 문서를 깔끔하게 요약해주는 등 방대한 양의 텍스트를 효율적으로 처리하는 능력이 점점 중요해지고 있다.
+여러 문서를 입력으로 넣고 쿼리를 날렸을 때 정확한 답변을 받거나, 문서를 깔끔하게 요약해주는 등 방대한 양의 텍스트를 효율적으로 처리하는 능력이 점점 중요해지고 있다.
 
 ![SCR-20250810-pezo](/assets/img/2025-08-10-Long-Context-LLM-1/SCR-20250810-pezo.png)
 
@@ -76,13 +76,13 @@ Qwen2.5-1M처럼 무려 100만 토큰이나 되는 컨텍스트 길이를 처리
 
 ### Pre-training
 
-- pre-training에서 중요한건 모델의 성능을 극대화인데, 이때 **고품질의 데이터를 확보하고, 이를 효과적으로 혼합하며, 필요에 따라 합성하는 것**이 필요함
+- pre-training에서 중요한 것은 모델의 성능을 극대화하는 것인데, 이를 위해 **고품질의 데이터를 확보하고, 이를 효과적으로 혼합하며, 필요에 따라 합성하는 것**이 필수적임
 - 특히 최근에는 **long context** 데이터를 정제하는 기술이 급격히 부상하고 있음
 
 **1. Data Filtering**
 
 - 모델의 성능은 데이터 품질에 크게 의존하므로, **데이터 필터링** 기법을 통해 데이터를 정제하는 것이 필수임
-- 짧은 텍스트를 제거하는 heuristic한 방식 혹은 MinHashLSH와 같은 알고리즘을 사용해 중복을 제거하는 기본적인 duplication 방법
+- 짧은 텍스트를 제거하는 heuristic한 방식이나 MinHashLSH와 같은 알고리즘을 사용해 중복을 제거하는 기본적인 중복 제거 방법
 - SemDeDup와 같이 사전 훈련 모델의 임베딩을 활용하여 **의미적 중복**을 제거하는 방법이 있음
 - 또한, 장문 데이터의 경우 **응집성(coherence), 일관성(cohesion), 복잡성(complexity)** 같은 언어적 특성을 평가하여 품질을 높이거나, 
 - [LongAttn](https://arxiv.org/abs/2502.16860)와 같이 **장거리 의존성(long-range dependency)**을 기준으로 데이터를 선별하는 기술이 사용됨
@@ -97,26 +97,26 @@ Qwen2.5-1M처럼 무려 100만 토큰이나 되는 컨텍스트 길이를 처리
 **3. Data Synthesis**
 
 - real-world corpus에서 장문 데이터는 희소하기 때문에, **synthesize**을 통해 부족한 데이터를 보충해야함
-- **clusters** 접근 방식은 의미적으로 유사한 텍스트들을 묶거나, 관련성 높은 문장들을 결합하는 방식으로 이루어짐
+- **클러스터링(clustering)** 접근 방식은 의미적으로 유사한 텍스트들을 묶거나, 관련성이 높은 문장들을 결합하는 방식으로 이루어짐
 - **non-neighboring sentences**을 활용한 방식으로 관련성이 있지만 인접하지 않은 문장들을 함께 훈련 예제로 사용하여 문장 표현의 품질을 향상시킴
-- **ICP** '외판원 문제(TSP)' 알고리즘을 활용해 문서의 중복성을 해결하며, **SPLICE**는 **유사한 여러 문서**를 구조화된 방식으로 묶어 훈련 샘플을 생성
-- Quest는 **쿼리 중심의 접근**을 통해 문서들을 그룹화하여 풍부한 문맥을 가진 장문 데이터를 효과적으로 생성함
+- **ICP**는 '외판원 문제(TSP)' 알고리즘을 활용해 문서의 중복성을 해결하며, **SPLICE**는 **유사한 여러 문서**를 구조화된 방식으로 묶어 훈련 샘플을 생성함
+- **Quest**는 **쿼리 중심의 접근법**을 통해 문서들을 그룹화하여 풍부한 문맥을 가진 장문 데이터를 효과적으로 생성함
 
 ---
 
 ### Post-training
 
 - Post-training 단계에서는 **Instruction-following**을 강화하기 위해 데이터 처리 방식이 중요함
-- 크게 **Data Filtering**과 **Data Synthesis** 두 가지 방법이 있으며, 특히 lost-in-the-middle 문제를 해결하고, preference 맞춰 모델을 최적화하는 데 (ex> DPO) 중점을 두고 있음
+- 크게 **Data Filtering**과 **Data Synthesis** 두 가지 방법이 있으며, 특히 'lost-in-the-middle' 문제를 해결하고, 선호도에 맞춰 모델을 최적화하는 데 (예: DPO) 중점을 두고 있음
 
 **1. Data Filtering**
 
-- 모델의 Instruction-following 능력를 높이기 위해 **influential 샘플**을 선별
-- 최근 **GATEAU**와 같은 연구에서 **Homologous Models’ Guidance**와 **Contextual Awareness Measurement**이라는 components를 도입하여 **long-range dependency**을 가진 데이터에서 influential 샘플을 식별하는 방법을 제시
+- 모델의 Instruction-following 능력을 높이기 위해 **영향력 있는(influential) 샘플**을 선별
+- 최근 **GATEAU**와 같은 연구에서 **Homologous Models' Guidance**와 **Contextual Awareness Measurement**라는 구성 요소를 도입하여 **장거리 의존성(long-range dependency)**을 가진 데이터에서 영향력 있는 샘플을 식별하는 방법을 제시
 
 **2. Data Synthesis**
 
-- 주로 lost in the middle 문제를 해결하고, 모델을 preference에 맞게 최적화하는 데 활용
+- 주로 'lost-in-the-middle' 문제를 해결하고, 모델을 선호도(preference)에 맞게 최적화하는 데 활용됨
 
 - **Long QA 데이터 합성**
   - Ziya-Reader는 contexts 내에서 여러 위치를 참고해야 하는 **Multi-doc QA**를 구축하여 "lost-in-the-middle" 문제를 해결
@@ -129,7 +129,7 @@ Qwen2.5-1M처럼 무려 100만 토큰이나 되는 컨텍스트 길이를 처리
 
   - **LOGO**는 automatic evaluator로 preference/dispreference 데이터를 합성 
 
-  - **LongDPO**는 몬테카를로 트리 서치(Monte Carlo Tree Search)을 통해 stepwise preference pairs 수집해 모델의 장문 생성 능력을 향상
+  - **LongDPO**는 몬테카를로 트리 서치(Monte Carlo Tree Search)를 통해 단계별 선호도 쌍(stepwise preference pairs)을 수집하여 모델의 장문 생성 능력을 향상시킴
 
 
 ---
