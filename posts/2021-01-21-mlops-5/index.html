@@ -1,0 +1,504 @@
+<!DOCTYPE html><html dir="ltr" lang="ko" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://pebpung.github.io/posts/2021-01-21-mlops-5/"><meta name="generator" content="Astro v5.16.6"><!-- Load Font --><style>@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/9617ee3bc3ad47fd.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/9617ee3bc3ad47fd.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/9617ee3bc3ad47fd.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/9617ee3bc3ad47fd.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/9617ee3bc3ad47fd.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/616354e20c7baae2.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/616354e20c7baae2.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/616354e20c7baae2.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/616354e20c7baae2.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/616354e20c7baae2.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/b9b1204819f100df.woff") format("woff");font-display:swap;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/5df55b3063a898b1.woff") format("woff");font-display:swap;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ec1bc5e628148563.woff") format("woff");font-display:swap;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/e7919ecb26ea3d50.woff") format("woff");font-display:swap;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/4658b641b3fab2bc.woff") format("woff");font-display:swap;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/7899455dad18d8ba.woff") format("woff");font-display:swap;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/cba962b31d4afe4c.woff") format("woff");font-display:swap;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/30e8e98a4dbebc0f.woff") format("woff");font-display:swap;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/c0e7258d0ce6ea15.woff") format("woff");font-display:swap;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/06e1bbacbb2d03d8.woff") format("woff");font-display:swap;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}:root{--font-google-sans-code:"Google Sans Code-04a186ad63205992","Google Sans Code-04a186ad63205992 fallback: Courier New",monospace;}</style><!-- General Meta Tags --><title>5. 제작 준비 | ML감자</title><meta name="title" content="5. 제작 준비 | ML감자"><meta name="description" content="Preparing for Production"><meta name="author" content="Kimin Park"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="5. 제작 준비 | ML감자"><meta property="og:description" content="Preparing for Production"><meta property="og:url" content="https://pebpung.github.io/posts/2021-01-21-mlops-5/"><meta property="og:image" content="https://pebpung.github.io/posts/2021-01-21-mlops-5/index.png"><!-- Article Published/Modified time --><meta property="article:published_time" content="2021-01-21T09:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://pebpung.github.io/posts/2021-01-21-mlops-5/"><meta property="twitter:title" content="5. 제작 준비 | ML감자"><meta property="twitter:description" content="Preparing for Production"><meta property="twitter:image" content="https://pebpung.github.io/posts/2021-01-21-mlops-5/index.png"><!-- Google JSON-LD Structured data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"5. 제작 준비 | ML감자","image":"https://pebpung.github.io/posts/2021-01-21-mlops-5/index.png","datePublished":"2021-01-21T09:00:00.000Z","author":[{"@type":"Person","name":"Kimin Park","url":"https://github.com/PEBpung"}]}</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="ML감자" href="https://pebpung.github.io/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.QW52Ox2j.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+      (function () {
+        const initialColorScheme = ""; // "light" | "dark"
+        const currentTheme = localStorage.getItem("theme");
+
+        function getPreferTheme() {
+          if (currentTheme) return currentTheme;
+          if (initialColorScheme) return initialColorScheme;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        const themeValue = getPreferTheme();
+
+        // Set theme immediately to prevent flash
+        document.firstElementChild?.setAttribute("data-theme", themeValue);
+
+        // Export minimal API for external script
+        window.theme = {
+          themeValue: themeValue,
+          getTheme: () => window.theme.themeValue,
+          setTheme: val => {
+            window.theme.themeValue = val;
+          },
+        };
+      })();
+    </script><style>:where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
+</style>
+<link rel="stylesheet" href="/_astro/about.iFcpYZZn.css">
+<style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><style>[data-astro-transition-scope="astro-fam6wyqg-1"] { view-transition-name: _5-\C81C\C791-\C900\BE44; }@layer astro { ::view-transition-old(_5-\C81C\C791-\C900\BE44) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(_5-\C81C\C791-\C900\BE44) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(_5-\C81C\C791-\C900\BE44) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(_5-\C81C\C791-\C900\BE44) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-2"] { view-transition-name: mlops; }@layer astro { ::view-transition-old(mlops) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(mlops) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(mlops) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(mlops) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body>  <a id="skip-to-content" href="#main-content" class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4">
+Skip to content
+</a> <header class="app-layout flex flex-col items-center justify-between sm:flex-row"> <div id="top-nav-wrap" class="py-4 sm:py-6 border-b border-border relative w-full bg-background flex items-baseline justify-between sm:items-center"> <a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"> ML감자 </a> <nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"> <button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg> </button> <ul id="menu-items" class="mt-4 grid w-44 grid-cols-2 place-content-center gap-2 [&#38;>li>a]:block [&#38;>li>a]:px-4 [&#38;>li>a]:py-3 [&#38;>li>a]:text-center [&#38;>li>a]:font-medium [&#38;>li>a]:hover:text-accent sm:[&#38;>li>a]:px-2 sm:[&#38;>li>a]:py-1 hidden sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0"> <li class="col-span-2"> <a href="/posts" class="active-nav">
+Posts
+</a> </li> <li class="col-span-2"> <a href="/tags">
+Tags
+</a> </li> <li class="col-span-2"> <a href="/about">
+About
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-fam6wyqg-1"> 5. 제작 준비 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2021-01-21T09:00:00.000Z">21 Jan, 2021</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <p>프로덕션 환경은 일반적으로 개발 환경과 매우 다를 뿐만 아니라 상업적 리스크도 크다. 그러므로 배포하기 전에 테스트하고 잠재적인 리스크를 적절히 완화하는 것이 중요하다. 이 장에서는 <strong>프로덕션으로의 배포</strong>를 준비하는 데 필요한 단계를 살펴 볼 예정이다.</p>
+<blockquote>
+<ul>
+<li><strong>프로덕션</strong>이란?<br>
+  실제 서비스를 위한 운영 환경</li>
+</ul>
+</blockquote>
+<br>
+<center><img src="/assets/img/2021-01-21/mlops-5/Untitled.png" width="700"></center>
+<br>
+<h2 id="런타임-환경">런타임 환경</h2>
+<hr>
+<blockquote>
+<ul>
+<li><strong>런타임 환경</strong>이란?<br>
+ 프로그램이 실행되고 있을 때 존재하는 곳을 말한다. 즉, 아이폰 내에서 프로그램이 기동되면, 아이폰이 그 프로그램의 런타임이다.</li>
+</ul>
+</blockquote>
+<br>
+<p>모델을 프로덕션으로 보내는 첫 번째 단계는 모델이 <strong>해당 환경에서 구동이 가능한 지 체크</strong>하는 것이다. 프로덕션 환경은 사용자 맞춤형 서비스, 데이터 사이언스 플랫폼, TensorFlow Serving, Kubernetes, 임베디드 시스템의 JVM등 다양한 형태를 취하고 있다. 개발 환경에서 실행되는 모델이 검증된 후 바로 프로덕션으로 전송되는 것이 가장 이상적이지만, 그렇지 못한 경우도 발생한다.</p>
+<br>
+<h3 id="개발에서-프로덕션-환경으로의-적용">개발에서 프로덕션 환경으로의 적용</h3>
+<br>
+<p>개발 및 프로덕션 플랫폼이 동일한 공급업체에서 제공되면 실제 환경에 적용할 때 큰 수정없이 실행될 수 있다. 이 경우 모델을 프로덕션에 투입하는 데 필요한 단계는 몇번의 클릭 또는 명령으로 줄어들 수 있다.</p>
+<p>하지만 이와 다른 경우에는 모델을 처음부터 다시 구현해야 하는 경우가 있다. 리소스와 시간을 고려했을 때는 결코 합리적이지 않은 선택이다. 그러나 여전히 많은 조직에서 이런 현상이 발생하며 종종 적절한 툴과 프로세스의 부족으로 발생한다.</p>
+<p>이 두가지 극단적인 예시에서 모델 또는 환경과의 상호 작용을 통해 수행되는 많은 변환이 있을 수 있다. 그래서 개발 환경이 아닌 <strong>가능한 프로덕션과 가까운 환경에서 검증</strong>을 수행하는 것이 중요하다.</p>
+<br>
+<h3 id="도구-고려-사항">도구 고려 사항</h3>
+<br>
+<p>프로덕션 환경으로 배포하기 전에 서로 다른 프레임워크 환경에서 만들어진 모델들이 <strong>서로 호환될 수 있도록 고려</strong>해야한다. 예를 들어 모델이 scikit-learn (Python)을 사용하여 개발되었는데, 프로덕션에서 <strong>ONNX</strong>를 입력으로 예상하는 java 기반 환경인 경우 변환이 필요하다.</p>
+<br>
+<p>이 경우에 팀이 모델을 개발하는 동안, 모델이 완료되기 전에 사용할 도구를 설정해야 된다. 이 파이프 라인을 미리 생성하지 못하면 <strong>유효성 검사</strong> 프로세스를 실행하지 못한다.</p>
+<br>
+<blockquote>
+<ul>
+<li><strong>ONNX</strong>(Open Neural Network Exchange)란?<br>
+ Tensorflow, PyTorch와 같은 서로 다른 딥러닝 환경에서 만들어진 모델들을 호환되도록 만들어진 공유 플랫폼.</li>
+</ul>
+</blockquote>
+<br>
+<blockquote>
+<ul>
+<li><strong>유효성 검사</strong>란?<br>
+ 정해진 형식의 데이터만 입력 가능하도록 제한하는 기능. 즉, 잘못된 데이터가 입력되지 않도록 방지하는 기능.</li>
+</ul>
+</blockquote>
+<br>
+<h3 id="성능-고려-사항">성능 고려 사항</h3>
+<br>
+<center><img src="/assets/img/2021-01-21/mlops-5/Untitled%201.png" width="700"></center>
+<center>[프로그래밍 언어별 성능 차이]</center>
+<br>
+<p>변환이 필요한 또 다른 이유는 <strong>성능 때문</strong>이다. 예를 들어 Python 같은 경우에는 C++ 보다 <strong>훨씬 느린 단점</strong>을 가지고 있다. 성능이 좋은 컴퓨터에서 테스트를 할 때는 고려하지 않아도 되지만, 임베디드 혹은 모바일 기기 같은 제한적인 성능을 가진 런타임 환경이라면 지연 시간을 고려해야 된다.</p>
+<p>이런 저전력 장치에서 모델을 실행해야 되는 경우에는 최적화된 런타임만으로는 충분하지 않다. 더 나은 성능을 얻으려면 모델 자체를 최적화 해야된다. 그렇다면 최적화 기술에는 어떤 것이 있는 지 살펴보도록 하겠다.</p>
+<br>
+<ul>
+<li>
+<p><code>양자화(Quantization)</code></p>
+<p>파라미터의 정밀도를 줄여서 **저비트(lower-bit)**를 사용해서 훈련한다. 예를 들어 int(보통 32bit 사용)로 사용된 숫자들을 8 bit로 압축시키는 것이다. 이렇게 되면 모델이 더 적은 메모리를 사용하고 <strong>연산 효율성</strong>도 높이기 때문에 전력을 효율적으로 사용할 수 있다. 또한 연산 속도가 빨라지고 성능이 향상된다. 하지만 정확도가 떨어질 수 있는 단점이 있다.</p>
+</li>
+<li>
+<p><code>가지치기(Pruning)</code></p>
+<p>모델의 파라미터에서 <strong>중요도가 떨어지는 값</strong>들을 모두 0으로 변경해서 모델의 크기를 줄여준다. 결과적으로 정확도에 손실을 줄 수 있지만, 연산 속도가 빨라집니다.</p>
+</li>
+<li>
+<p><code>지식증류(Knowledge Distlation)</code></p>
+<p>지식 증류는 이미 학습된 모델의 파라미터 값을 모당(mimic)해서 ‘학생’ 네트워크를 만드는 것이다. 적절하게 사용한다면 적은 파라미터를 사용하여 더 나은 모델로 만들어 질 수 있다.</p>
+</li>
+</ul>
+<br>
+<h3 id="검증-및-프로덕션-시작-전-데이터-엑세스">검증 및 프로덕션 시작 전 데이터 엑세스</h3>
+<br>
+<center><img src="/assets/img/2021-01-21/mlops-5/Untitled%202.png" width="700"></center>
+<br>
+<p>검증 전에 해결해야 할 또 다른 이슈는 <strong>데이터 엑세스</strong>이다. 데이터 세트가 너무 크거나 항상 최신의 데이터를 요구하는 경우에는 데이터베이스에 엑세스하여 사용해야 한다. 원활한 환경을 위해서는 통신에 필요한 적절한 네트워크 연결, 라이브러리 또는 드라이버를 가져야한다.</p>
+<p>이 설정과 구성을 관리하는 것은 상당히 복잡할 수 있다. 적절한 도구와 협업이 필요하기 때문이다. 외부 데이터를 엑세스하는 기술 연결이 프로덕션 오작동의 일반적인 원인이기 때문에 신중한 관리가 필요하다. 또한 프로덕션 환경과 거의 일치하는 상황에서 모델 검증이 필요하다.</p>
+<br>
+<h3 id="런타임-환경에-대한-결론">런타임 환경에 대한 결론</h3>
+<p>모델을 훈련할 때는 일반적으로 <strong>방대한 자원과 GPU</strong>가 필요하다. 하지만 전체적인 MLOps 프로세스에서 보면 대부분의 계산이 추론에 소모된다. 왜냐하면 모델은 한 번만 훈련되고 추론에는 <strong>수 십억번</strong>이나 사용될 수 있기 때문이다.</p>
+<p>복잡한 모델의 경우 추론에 드는 확장 비용이 많이 들고 에너지 및 환경에 상당한 영향을 미칠 수 있다. 그렇기 때문에 모델의 복잡성을 낮추거나 복잡한 모델을 압축하여 성능을 높이고 전력 소비를 줄이는 일은 매우 중요한 단계이다.</p>
+<br>
+<h2 id="모델-위험-평가">모델 위험 평가</h2>
+<hr>
+<p>모델을 구현에는 <strong>버그</strong>가 있을 수 있다. 프로덕션 환경에서 모델이 외부에서 받을 수 있는 영향은 확실하지 않다. 사소하다고 생각되는 오류가 실제 시스템에선 엄청난 결과를 초례할 수 있다.</p>
+<br>
+<h3 id="모델-검증-목적">모델 검증 목적</h3>
+<p>모델을 프로덕션에 적용하기 전에 최악의 경우를 대비해야 된다. 조직이 복잡 해짐에 따라 오작동 또는 악의적인 공격이 머신러닝 사용에서 <strong>잠재적인 위협을 받고 있음</strong>을 이해해야 된다. 그래서 다음과 같은 문제에 대비해야 된다.</p>
+<br>
+<ul>
+<li>모델이 열악한 상황에서 <strong>최악의 방식</strong>으로 작동되면 어떻게 될까?</li>
+<li>사용자가 모델의 학습 데이터 또는 내부 논리를 <strong>추출 하게</strong> 된다면 어떻게 될까?</li>
+<li>재정, 비즈니스, 법률, 안전 및 평판 리스크에는 무엇이 있을까?</li>
+</ul>
+<br>
+<h3 id="ml모델-리스크의-원인">ML모델 리스크의 원인</h3>
+<p>ML모델의 리스크는 수학적으로 모델링 하기 어렵다. 그리고 모델을 실제로 배포했을 때 비로소 리스크가 구체화된다. cost matrix를 통해 모델의 예상 평균 비용을 예상할 수 있지만, 예상 비용을 훨씬 넘어서는 문제가 발생할 수 있다. 이렇게 리스크는 재정적인 문제, 개인의 안전 문제 또는 조직의 실존적 위협으로 다가 올 수 있다. ML 모델 리스크의 <strong>본질적인 원인</strong>은 다음과 같다.</p>
+<br>
+<ul>
+<li>모델 설계, 학습, 또는 평가시 버그와 오류</li>
+<li>런타임 프레임 워크의 버그, 모델 후처리 후 버그 또는 비 호환성</li>
+<li>저 품질의 학습 데이터</li>
+<li>프로덕션 데이터와 학습 데이터 간의 괴리</li>
+<li>저작권 침해 또는 모델 출력에 대한 법적 위험</li>
+<li>머신러닝의 비 윤리적 사용으로 인한 위험</li>
+</ul>
+<br>
+<h2 id="머신러닝을-위한-qa">머신러닝을 위한 QA</h2>
+<hr>
+<br>
+<center><img src="/assets/img/2021-01-21/mlops-5/Untitled%203.png" width="700"></center>
+<br>
+<blockquote>
+<ul>
+<li><strong>QA</strong>란?<br>
+ ‘<strong>Quality Assurance</strong>’의 약자로 품질 보증을 뜻한다. 일정 수준의 품질을 가질 수 있도록 제품 출시 전에 각종 테스트 및 검수 작업을 하는 업무를 말한다.</li>
+</ul>
+</blockquote>
+<br>
+<p>소프트웨어 엔지니어링은 QA가 잘 마련되어 있지만, 데이터 및 모델에 대한 QA는 아직 MLOps 프로세스에 통합하기엔 부족한 점이 있다. 그러나 QA는 머신러닝 학습의 최종 검증에만 사용되는 것이 아니라 <strong>모든 단계에서 수행</strong>되어야 한다. 왜냐하면 QA의 목적은 프로세스 준수와 리스크 수준에 비례하는 세부 사항을 보장해야 하는 것이기 때문이다.</p>
+<p>검증 담당자가 모델을 개발에 참여한 사람이 아닌 경우 머신러닝에 대한 이해가 필요하다. 또한 개발 팀은 조직의 구조와 문화를 적절하게 보고하고 위험 수준을 체크하며 <strong>지속적인 개선에 기여</strong>해야한다. 프로덕션으로 보내기 전에 QA를 수행하는 것은 기술 검증 뿐만 아닌 지침에 따라서 모델을 검증하는 기회이기도 하다. 특히 모든 입력 데이터셋, pre-trained 모델 또는 기타 자원에 대한 <strong>출처</strong>를 알려야한다.</p>
+<br>
+<h2 id="테스트-시-고려-사항">테스트 시 고려 사항</h2>
+<hr>
+<p>모델을 테스트 할 때는 모델에 데이터를 입력하고 조건에 따라 측정 값을 검증하는 것으로 구성 될 것이다. 테스트 데이터는 ‘<strong>실제 환경</strong>’의 데이터와 다른 경우가 흔히 있다. 예를 들어 이상치, 결측값과 같은 <strong>의외의 데이터</strong>가 들어올 경우를 대비하는 것이 좋다.</p>
+<p>Metrics는 정확도, 정밀도, 재현율과 같은 <strong>통계적 측면</strong> 뿐만 아니라 지연시간 등과 같은 <strong>계산에 대한 측면</strong> 또한 모두 수집해야 한다. 이 중 하나라도 어긋나게 된다면 테스트 시나리오가 실패하게 될 것입니다.</p>
+<p>ML과 계산 성능 metric 검증 외에도 모델 안정성은 중요한 테스트 속성이다. 하나의 기능을 조금 변형하면 약간의 변형이 일어 날 것이라고 예상할 수 있다. 하지만 기능을 살짝 변경했는데 성능이 급격히 나빠지는 경우 매우 불안정한 모델이라고 할 수 있다. 이렇게 되면 성능이 좋은 모델이라도 신뢰할 수 없는 모델이라고 말 할 수 있을 것이다.</p>
+<br>
+<h2 id="재현성-및-검토-가능성">재현성 및 검토 가능성</h2>
+<hr>
+<p>MLOps에서 재현성은 다음과 같은 내용이 포함된다.</p>
+<br>
+<ol>
+<li>다른 사람이 설명만으로 실험을 복제 할 수 있고, 동일한 결론에 도달 할 수 있다.</li>
+<li><strong>정확히 동일한 실험을 쉽게 재실행 할 수 있다.</strong></li>
+</ol>
+<br>
+<p>위의 2번 째 내용이 <strong>MLOps 재현성의 핵심</strong>이다. 모델의 자세한 문서, 학습 및 테스트에 사용되는 데이터, 그리고 전체 사양을 제공하는 아티팩트와 함께 제공된다는 것을 의미한다. 재현성은 모델 결과를 증명할 뿐만 아니라 <strong>이전 실험을 디버그하거나 구축</strong>하는 데 필수적이다.</p>
+<p>모델을 검토 할 수 있으려면 중앙의 안정적인 저장소에서 다음과 같이 추적을 용이하게 하는 자료를 갖추어야한다.</p>
+<br>
+<ul>
+<li>전체 문서</li>
+<li>정확하게 초기 환경으로 모델을 실행할 수 있는 <strong>아티팩트</strong>.</li>
+<li>모델 설명 및 공정성 보고서를 포함한 테스트 결과</li>
+<li>자세한 모델 로그 및 모니터링 메타 데이터</li>
+</ul>
+<br>
+<p>이러한 요구 사항들은 자칫 중요하지 않은 것으로 치부 될 수 있다. 하지만 프로젝트의 중요도에 따라서 많은 사람들이 모델의 세부사항을 이해할 수 있게 해야한다. 사회에 많은 영향을 끼칠 수 있는 프로젝트인 만큼 신중한 검토가 필요하기 때문이다.</p>
+<br>
+<blockquote>
+<ul>
+<li><strong>아티팩트</strong>란?<br>
+  소프트웨어 개발 프로젝트를 진행하면서 생성하는 다양한 산출물을 의미한다. 각종 설계문서, 소스코드, 소스를 빌드하여 생성된 라이브러리나 실행 파일 모드 아티팩트에 속한다.</li>
+</ul>
+</blockquote>
+<br>
+<h2 id="머신러닝의-보안">머신러닝의 보안</h2>
+<hr>
+<p><strong>머신러닝은 소프트웨어</strong>이다. 그러므로 웹이나 앱상으로 배포된 프레임워크는 다양한 보안 문제에 직면할 수 있다. 머신러닝 기술이 내포하고 있는 보안 취약점과 이를 통해 발생하는 문제점을 알아보고자 한다.</p>
+<br>
+<h3 id="적대적-공격">적대적 공격</h3>
+<p>기존의 해킹 방법은 유무선 네트워크나 시스템, 단말기 등 취약점을 이용했다. 하지만 새로운 해킹 방법은 머신러닝 알고리즘이 내재하고 있는 취약점을 이용한다. 딥러닝 추론은 본질적으로 행렬곱이기 때문에 작은 변화에도 출력 수에 큰 변화를 일으킬 수 있다.</p>
+<p>이에 대한 한가지 예가 있다. 한 연구팀이 도로 교통 표지판에 이미지 스티커를 부착해 자율주행 자동차의 표지판 인식 모듈을 교란하는 실험을 발표했다. 스티커 부착만으로 자율주행차가 ‘정지’ 표시를 ‘속도제한’ 표시로 오인식 하도록 만들었다. 이처럼 머신러닝 알고리즘에 내재하고 있는 취약점에 의해 발생할 수 있는 위험을 **적대적 공격(Adversarial Attack)**라고 한다.</p>
+<br>
+<center><img src="/assets/img/2021-01-21/mlops-5/Untitled%204.png" width="700"></center>
+<br>
+<p>이 외에도 머신러닝 보안의 취약점을 이용한 공격 방법이 존재한다.</p>
+<br>
+<ul>
+<li>
+<p><code>오염 공격 (Poisoning attack)</code></p>
+<p>악의적인 데이터를 최소한으로 주입해 모델의 성능을 크게 떨어뜨리는 공격</p>
+</li>
+<li>
+<p><code>회피공격 (Evasion attack)</code></p>
+<p>입력데이터에 최소한의 변조를 가해 머신러닝을 속이는 기법. 이미지 분류 머신러닝의 경우, 사람의 눈으로는 식별하기 어려운 방식으로 이미지를 변조해 머신러닝 이미지 분류 모델이 착오를 일으키게 만드는 수법</p>
+</li>
+<li>
+<p><code>학습 데이터 추출 공격 (Inversion attack)</code></p>
+<p>머신러닝 모델에 수많은 쿼리를 던진 후, 산출된 결과값을 분석해 모델 학습을 위해 사용된 데이터를 추출하는 공격</p>
+</li>
+<li>
+<p><code>모델 추출 공격 (Model extraction attack)</code></p>
+<p>머신러닝 모델에 쿼리를 계속 던지면서 결과값을 분석하는 방식의 공격</p>
+</li>
+</ul>
+<br>
+<h2 id="위험-완화-모델">위험 완화 모델</h2>
+<hr>
+<p>모델 배포 범위가 넓을수록 발생할 수 있는 <strong>리스크이 더 커지게</strong> 된다. 리스크가 충분히 높다고 생각되면 엄격하게 제어되는 MLOps 프로세스를 배포하는 것이 중요하다. 새로운 버전의 모델을 조직 또는 일부 고객에게 먼저 제공하고 그 비율을 천천히 증가 시키면서 모니터링하고 피드백을 받아야한다.</p>
+<br>
+<h3 id="변화하는-환경">변화하는 환경</h3>
+<p><strong>급변하는 환경</strong>은 다음과 같은 위험을 동반한다.</p>
+<br>
+<ul>
+<li>모니터링 시스템이 경고를 보내기 전에도 변경 사항이 너무 빠르기 때문에 결과가 발생.</li>
+<li>효율적인 모니터링 시스템과 모델 재학습이 있어도 수정에 필요한 시간이 촉박함.</li>
+<li>특히 새 데이터 학습이 아닌, 새로운 모델을 개발해야 되는 경우 더욱 시간이 부족함.</li>
+</ul>
+<br>
+<p>이런 문제로 인해서 시스템이 잘못 작동하게 되면 조직에 큰 손실을 가져올 수 있다.</p>
+<p>이 위험을 제어하기 위해서는 <strong>모니터링</strong>이 충분히 대응적이어야 하며, MLOps 절차에서 수정에 필요한 기간을 고려해야한다. 재학습 및 배포 전략 외에도 성능 저하에 따라 모델을 트리거 하는 임계값을 설정 할 수 있다. 단순히 최종 사용자에게 표시되는 경고 메시지를 보낼 수 있지만, 과감하게 장애가 있는 시스템을 종료하게 할 수도 있다. 다른 해결책은 성능이 낮고 자주 변경되는 환경에서 더 일관 될 수 있는 <strong>덜 복잡한 모델</strong>을 사용하는 것이다.</p>
+<br>
+<h3 id="모델-간의-상호-작용">모델 간의 상호 작용</h3>
+<p>모델 간의 <strong>복잡한 상호 작용은 위험 요소를 더욱 어렵게</strong> 만든다. 이 문제는 ML 모델이 보편화 됨에 따라서 관심사가 더욱 증가할 것이다. 모델을 추가하면 복잡성이 모델 수에 선형적으로 증가할 것 같지만, 잠재적인 상호작용을 고려하면 더욱 복잡해 질 것이다.</p>
+<p>또한 복잡성은 로컬 규모로 설계되고 <strong>조직 규모에서 관리되는 방식</strong>에 따라 크게 결정된다. 모델이 다른 모델의 입력을 사용하는 경우 완전히 예상치 못한 결과가 발생할 수 있으며, 추가적인 복잡성이 발생할 수 있다. 하지만 가능한 짧고 설명가능하며 독립적인 모델을 사용하면 훨씬 더 수월한 관리가 될 것이다.</p>
+<br>
+<ol>
+<li>모델 간에 상호작용이 없으면 복잡성이 선형에 가까워진다.</li>
+<li>중복 처리 체인(모델이 다른 모델의 입력 사용)에 사용되는 모델은 오류를 방지 할 수 있다.</li>
+<li>일반적으로 모델이 복잡할수록 다른 시스템과의 상호 작용이 더 복잡해질 수 있다.</li>
+</ol>
+<br>
+<h3 id="모델-오작동">모델 오작동</h3>
+<p>실시간으로 입력과 출력을 검사하는 것을 포함해서 <strong>여러 측정 값을 통해 오작동을 판별</strong>할 수 있다. 추론시 feature 값이 범위를 벗어난 경우 시스템은 적절한 조치를 취할 수 있어야 한다. feature 값 간격을 제어하는 것은 유용하지만 충분하지 않을 수 있다. 예를 들어, 피처의 수가 많을 경우 차원의 저주로 인해 문제를 피할 수 없게 된다.</p>
+<p>이런 상황에서는 모델이 프로그램 도메인 외부에서 사용되는 기록을 식별하기 위해 <strong>이상 탐지 등 정교한 방법</strong>을 사용할 수 있다. 분류의 경우 많은 알고리즘이 예측 외에 certainty scores를 제공하여 output을 수용하도록 임계값을 수정할 수 있다.</p>
+<br>
+<blockquote>
+<p>Introducing MLOps (저자:Mark Treveil) 의 책을 읽고 MLOps에 대해 정리한 글이다. 더 자세한 내용을 알고 싶다면 <a href="https://pebpung.github.io/mlops/2021/01/14/MLOps0.html">MLOps 책 소개</a>를 보길 바란다.</p>
+</blockquote> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/mlops/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> MLOps </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+Back To Top
+</span> </button> </div> <script data-astro-rerun>
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    // Attach click event handler for back-to-top button
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+
+    // Handle button visibility according to scroll position
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script> <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post on:</span><div class="text-center"><a href="https://wa.me/?text=https://pebpung.github.io/posts/2021-01-21-mlops-5/" title="Share this post via WhatsApp" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg><span class="sr-only">Share this post via WhatsApp</span> </a><a href="https://www.facebook.com/sharer.php?u=https://pebpung.github.io/posts/2021-01-21-mlops-5/" title="Share this post on Facebook" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="sr-only">Share this post on Facebook</span> </a><a href="https://x.com/intent/post?url=https://pebpung.github.io/posts/2021-01-21-mlops-5/" title="Share this post on X" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg><span class="sr-only">Share this post on X</span> </a><a href="https://t.me/share/url?url=https://pebpung.github.io/posts/2021-01-21-mlops-5/" title="Share this post via Telegram" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg><span class="sr-only">Share this post via Telegram</span> </a><a href="https://pinterest.com/pin/create/button/?url=https://pebpung.github.io/posts/2021-01-21-mlops-5/" title="Share this post on Pinterest" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 20l4 -9" /><path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg><span class="sr-only">Share this post on Pinterest</span> </a><a href="mailto:?subject=See%20this%20post&#38;body=https://pebpung.github.io/posts/2021-01-21-mlops-5/" title="Share this post via email" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg><span class="sr-only">Share this post via email</span> </a></div></div> <hr class="my-6 border-dashed"> <!-- Previous/Next Post Buttons --> <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2"> <a href="/posts/2021-07-24-devops" class="flex w-full gap-1 hover:opacity-75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <div> <span>Previous Post</span> <div class="text-sm text-accent/85">2. Docker 빌드 자동화 (CI 파트)</div> </div> </a> <a href="/posts/2021-01-20-mlops-4" class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"> <div> <span>Next Post</span> <div class="text-sm text-accent/85">4. 모델 개발</div> </div> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6l6 6l-6 6" /></svg> </a> </div> </main> <footer class="app-layout mt-auto"> <div class="py-6 sm:py-4 border-t border-border flex flex-col items-center justify-between sm:flex-row-reverse"> <div class="flex flex-wrap items-center gap-1"> <a href="https://github.com/satnaing/astro-paper" title="ML감자 on GitHub" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> <span class="sr-only">ML감자 on GitHub</span>  </a><a href="https://x.com/username" title="ML감자 on X" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg> <span class="sr-only">ML감자 on X</span>  </a><a href="https://www.linkedin.com/in/username/" title="ML감자 on LinkedIn" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 1 0 -4 0" /><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" /></svg> <span class="sr-only">ML감자 on LinkedIn</span>  </a><a href="mailto:yourmail@gmail.com" title="Send an email to ML감자" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg> <span class="sr-only">Send an email to ML감자</span>  </a> </div> <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"> <span>Copyright &#169; 2026</span> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> <span>All rights reserved.</span> </div> </div> </footer>  <!-- Load full theme logic --> <script type="module">const d="theme",r="light",m="dark";function i(){const e=localStorage.getItem(d);return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?m:r)}let t=window.theme?.themeValue??i();function c(){localStorage.setItem(d,t),o()}function o(){document.firstElementChild?.setAttribute("data-theme",t),document.querySelector("#theme-btn")?.setAttribute("aria-label",t);const e=document.body;if(e){const n=window.getComputedStyle(e).backgroundColor;document.querySelector("meta[name='theme-color']")?.setAttribute("content",n)}}window.theme?(window.theme.setPreference=c,window.theme.reflectPreference=o):window.theme={themeValue:t,setPreference:c,reflectPreference:o,getTheme:()=>t,setTheme:e=>{t=e}};o();function s(){o(),document.querySelector("#theme-btn")?.addEventListener("click",()=>{t=t===r?m:r,window.theme?.setTheme(t),c()})}s();document.addEventListener("astro:after-swap",s);document.addEventListener("astro:before-swap",e=>{const a=e,n=document.querySelector("meta[name='theme-color']")?.getAttribute("content");n&&a.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content",n)});window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",({matches:e})=>{t=e?m:r,window.theme?.setTheme(t),c()});</script> </body> </html> <script data-astro-rerun>
+  /** Create a progress indicator
+   *  at the top */
+  function createProgressBar() {
+    // Create the main container div
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    // Create the progress bar div
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    // Append the progress bar to the progress container
+    progressContainer.appendChild(progressBar);
+
+    // Append the progress container to the document body or any other desired parent element
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  /** Update the progress bar
+   *  when user scrolls */
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (document) {
+        const myBar = document.getElementById("myBar");
+        if (myBar) {
+          myBar.style.width = scrolled + "%";
+        }
+      }
+    });
+  }
+  updateScrollProgress();
+
+  /** Attaches links to headings in the document,
+   *  allowing sharing of sections easily */
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /* Go to page start after page swap */
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script>
