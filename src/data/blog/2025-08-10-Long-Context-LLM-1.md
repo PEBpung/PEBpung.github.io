@@ -23,19 +23,21 @@ tags: [LLM, Data]
 
 # Overview
 
-최근 업무를 하면서 Long Context에서 LLM 성능을 높이는 방법에 대한 필요성을 느끼고 있다.
+최근 업무를 하면서 Long Context에서 LLM 성능을 높이는 방법에 대한 필요성을 느끼고 있습니다.
 
-여러 문서를 입력으로 넣고 쿼리를 날렸을 때 정확한 답변을 받거나, 문서를 깔끔하게 요약해주는 등 방대한 양의 텍스트를 효율적으로 처리하는 능력이 점점 중요해지고 있다.
+여러 문서를 입력으로 넣고 쿼리를 날렸을 때 정확한 답변을 받거나, 문서를 깔끔하게 요약해주는 등 방대한 양의 텍스트를 효율적으로 처리하는 능력이 점점 중요해지고 있습니다.
 
 ![SCR-20250810-pezo](/assets/img/2025-08-10-Long-Context-LLM-1/SCR-20250810-pezo.png)
 
-위 그림에서와 같이 Claude, Gemini, GPT와 같은 Closed LLM은 물론이고, Open source LLM에서도 마찬가지로 시퀀스 길이가 늘어날수록 성능 손실이 치명적으로 발생한다.
+위 그림에서와 같이 Claude, Gemini, GPT와 같은 Closed LLM은 물론이고, Open source LLM에서도 마찬가지로 시퀀스 길이가 늘어날수록 성능 손실이 치명적으로 발생합니다.
 
-Qwen2.5-1M처럼 무려 100만 토큰이나 되는 컨텍스트 길이를 처리할 수 있는 모델들이 나오고 있지만, 이런 모델들도 특정 태스크에 맞춰 alignment tuning을 하려면 결국 고품질의 long context 데이터를 확보해야 한다는 과제가 남아있다.
+Qwen2.5-1M처럼 무려 100만 토큰이나 되는 컨텍스트 길이를 처리할 수 있는 모델들이 나오고 있지만, 이런 모델들도 특정 태스크에 맞춰 alignment tuning을 하려면 결국 고품질의 long context 데이터를 확보해야 한다는 과제가 남아있습니다.
 
-물론 pre-training 단계에서 이미 256k 컨텍스트 길이로 학습되었기 때문에 fine-tuning 효과는 더 좋을 것이다.
+물론 pre-training 단계에서 이미 256k 컨텍스트 길이로 학습되었기 때문에 fine-tuning 효과는 더 좋을 것입니다.
 
-그래서 오늘은 "A Comprehensive Survey on Long Context Language Modeling" 논문을 분석해보면서, Pre-training과 Post-training 각 단계에서 어떤 데이터 전략들이 사용되었는지 자세히 살펴보려고 한다.
+그래서 오늘은 "A Comprehensive Survey on Long Context Language Modeling" 논문을 분석해보면서, Pre-training과 Post-training 각 단계에서 어떤 데이터 전략들이 사용되었는지 자세히 살펴보려고 합니다.
+
+그러면 지금부터 논문의 내용을 바탕으로 각 단계별 데이터 전략을 살펴보겠습니다.
 
 
 
@@ -146,3 +148,11 @@ Qwen2.5-1M처럼 무려 100만 토큰이나 되는 컨텍스트 길이를 처리
 | Long Reward           | Bilingual, preference optimization                           | Post-training | [arxiv](https://arxiv.org/abs/2410.21252), [github](https://github.com/THUDM/LongReward) |
 | LOGO                  | Preference optimization                                      | Post-training | [arxiv](https://arxiv.org/abs/2410.18533), [github](https://github.com/LCM-Lab/LCM_Stack) |
 | LongDPO               | Long-form Generation, preference optimization, step-level    | Post-training | [arxiv](https://arxiv.org/abs/2404.12357), [github](https://github.com/pingbowen23/LongDPO) |
+
+---
+
+## 마무리
+
+이번 포스팅에서는 Long Context Language Models의 성능을 높이기 위한 데이터 전략을 Pre-training과 Post-training 관점에서 살펴보았습니다. 고품질의 장문 데이터를 확보하기 위한 Data Filtering, Mixture, Synthesis 기법들이 활발히 연구되고 있으며, 특히 "lost-in-the-middle" 문제 해결을 위한 합성 데이터 기법이 주목받고 있습니다.
+
+다음 포스팅에서는 Long Context LLM의 효율적인 학습 및 배포 방법에 대해 다룰 예정입니다.

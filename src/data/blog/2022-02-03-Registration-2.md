@@ -6,9 +6,13 @@ pubDatetime: 2022-02-03T09:00:00
 tags: [Medical, AI, Registration]
 ---
 
-> VoxelMorph: A Learning Framework for Deformable Medical Image Registration 논문을 읽고 정리한 글입니다.  
+### Summary
 
-<br>
+- Deformable Registration은 비선형 변환을 통해 의료 이미지를 정합하는 기법입니다
+- VoxelMorph는 CNN 기반 Unsupervised learning으로 계산량을 대폭 줄인 Registration 모델입니다
+- 기존 ANTs SyN 대비 비슷한 성능을 유지하면서 속도를 약 160배 향상시켰습니다
+
+---
 
 
 
@@ -24,7 +28,7 @@ tags: [Medical, AI, Registration]
 
 대부분의 사진 정합에서 높은 정확도로 Registration이 될 수 있다는 장점에도 불구하고 Deformable Registration은 실제로 사용하기 어렵다는 단점이 있습니다. 그 이유는 Deformable field를 계산하기 위한 computational resource가 많이 든다는 점입니다. 특히 3D 영상의 경우 각 pair에 대해서 dense하고 non-linear한 correpondance가 이루어지기 때문에 계산량이 많아지게 됩니다. 이러한 문제를 해결하기 위해서 최근에는 CNN을 도입한 Deformable registration 기법이 등장하게 됩니다. 
 
-<br>
+지금까지 Deformable Registration의 개념을 살펴보았습니다. 이제 이 문제를 CNN으로 해결한 VoxelMorph에 대해 알아보겠습니다.
 
 ## **VoxelMorph**
 
@@ -48,6 +52,8 @@ Supervised learning의 특성상 ground truth 정보가 필요합니다. 하지�
 
 VoxelMorph에 대한 내용을 하나씩 살펴보도록 하겠습니다. 우선 입력으로는 Moving 3D image와 Fixed 3D image가 있어야 합니다. 이 두개의 이미지는 미리 affine alignment를 수행해야 합니다. 그 후에 두개의 input을 Unet으로 넣어주게 됩니다. 
 
+그렇다면 기존의 방법론 대비 VoxelMorph가 갖는 이점은 무엇일까요?
+
 ### VoxelMorph를 사용하는 이유
 
 VoxelMorph 이전에도 ANTs모듈의 SyN을 사용해서 Non-rigid Registration을 수행했습니다. 하지만 기존의 Non-rigid Registration 방식은 뒤틀려져 있는 기하학적인 변화를 계산하기에 굉장히 많은 시간이 걸립니다.
@@ -55,6 +61,8 @@ VoxelMorph 이전에도 ANTs모듈의 SyN을 사용해서 Non-rigid Registration
 ![img](/assets/img/2022/https%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F39b698ee-6aad-478b-b23f-85a0f77f9b33%252FUntitled.png)
 
 위의 표를 보게 되면 ANTs모듈의 SyN의 경우 CPU에서 9059s 즉, 2시간 반 정도의 시간이 소모됩니다. 이에 반해서 VoxelMorph는 성능은 비슷하지만 57초로 매우 빠른 성능을 보여주고 있습니다.
+
+VoxelMorph의 빠른 속도를 활용하면 실제 임상에서 Parcellation 작업에도 적용할 수 있습니다.
 
 ### VoxelMorph를 사용해서 Parcellation 수행
 
@@ -76,3 +84,7 @@ VoxelMorph 방식도 이와 유사합니다. Moving 3D image인 m, Segmentation 
 ![img](/assets/img/2022/https%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F320f9136-e8fd-42d6-a304-96dc2fc97e9e%252FUntitled.png)
 
 즉, 위와 같이 파란색 박스의 정보를 얻게 되면 Moved Segmentation 정보를 Fixed 3D image f의 Segmentation Mask로 활용할 수 있게 됩니다.
+
+## 마무리
+
+이번 포스팅에서는 Deformable Registration의 개념과 CNN 기반 방법론인 VoxelMorph를 살펴보았습니다. VoxelMorph는 Unsupervised learning 방식으로 Ground Truth 없이도 학습이 가능하며, 기존 방법 대비 약 160배 빠른 속도로 Registration을 수행할 수 있습니다. Medical Image Registration에 관심이 있으신 분들에게 VoxelMorph를 적극 추천드립니다.

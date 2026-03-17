@@ -6,7 +6,7 @@ pubDatetime: 2025-03-16T09:00:00
 tags: [Engineering, AI, LLM]
 ---
 
-### Summary:
+### Summary
 
 - 다양한 LLM 파인튜닝 지원: 100개 이상의 모델과 더불어 LoRA, QLoRA 등 메모리 효율적 기법을 적용할 수 있음
 
@@ -16,15 +16,12 @@ tags: [Engineering, AI, LLM]
 
 ---
 
-<br>
-
 최근 LLaMA, Mistral, Gemma, Qwen 등 너 나 할 것 없이 자기 모델이 최고라며 성능 좋은 오픈소스 LLM 모델이 쏟아져 나오고 있습니다. 허깅페이스의 [open_llm_leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/)에 등재된 오픈소스 LLM 모델만 해도 2025.03 기준 4,576개 존재하는 것을 확인할 수 있습니다. 
 
 특히 LLaMA는 Meta가 공개한 LLM으로 모델 weight를 공개했으며, OpenAI의 ChatGPT와 달리 모델 가중치를 제공하며 상업적 사용도 가능합니다. 이렇듯 Meta가 오픈소스 LLM 진영에 LLaMA를 공개하므로써 오픈소스 LLM 모델의 연구는 더더욱 활발해 지고 있습니다. 그렇게 되면 현존하는 모델보다 더 좋고 빠른 모델이 수도 없이 등장하지 않을까요?
 
 그래서 이번 포스팅에서는 100개 이상의 언어 모델을 위한 통합 효율적 파인 튜닝 프레임워크인 LLaMA-Factory를 소개드리려고 합니다. LLaMA-Factory의 특징을 설명하면서 왜 LLaMA-Factory가 사용하기 편하고, 얼마나 다양한 학습 방법을 지원하는지 살펴보려고 합니다. 
 
-<br>
 
 ## LLaMA-Factory 개요
 
@@ -36,7 +33,7 @@ LLaMA-Factory는 베이항 대학교의 연구진이 개발한 오픈소스 프�
 
 LLaMA-Factory GitHub [[링크](https://github.com/hiyouga/LLaMA-Factory.git)]
 
-<br>
+LLaMA-Factory를 사용하기 위해 먼저 설치 과정을 살펴보겠습니다.
 
 ## 설치 방법
 
@@ -50,8 +47,6 @@ cd LLaMA-Factory
 # 설치 (필수)
 pip install -e ".[torch,metrics]"
 ```
-
-<br>
 
 ### 가상 환경 설정 (uv 사용)
 
@@ -68,13 +63,9 @@ source .venv/bin/activate
 uv run --prerelease=allow llamafactory-cli train examples/train_lora/llama3_lora_pretrain.yaml
 ```
 
-<br>
-
 ### 가상 환경 설정 v2 (uv 사용)
 
-위 방식으로는 가상환경 세팅이 되지 않아서 아래와 같이 진행했습니다. 
-
-<br>
+위 방식으로는 가상환경 세팅이 되지 않아서 아래와 같이 진행했습니다.
 
 [uv](https://github.com/astral-sh/uv)를 이용한 Python 환경 생성
 
@@ -92,8 +83,6 @@ source .venv/bin/activate
 llamafactory-cli train examples/train_lora/llama3_lora_pretrain.yaml
 ```
 
-<br>
-
 ## 하드웨어 요구 사항
 
 LLaMA-Factory는 다양한 하드웨어 환경에서 작동하도록 설계되었습니다. 파인튜닝 방법에 따른 대략적인 GPU 메모리 요구 사항은 다음과 같습니다.
@@ -109,7 +98,7 @@ LLaMA-Factory는 다양한 하드웨어 환경에서 작동하도록 설계되�
 
 이를 통해 저사양 GPU에서도 QLoRA와 같은 방법을 활용하면 LLM을 Fine-tuning 할 수 있습니다.
 
-<br>
+설치가 완료되었다면, 학습에 사용할 데이터를 준비해야 합니다.
 
 ## 데이터 준비
 
@@ -137,7 +126,7 @@ LLaMA-Factory에서 사용할 데이터는 몇 가지 형식으로 준비할 수
 
 사용자 지정 데이터셋을 사용하려면 `data/dataset_info.json` 파일을 업데이트하세요.
 
-<br>
+데이터 준비가 완료되었다면, 본격적으로 LLaMA-Factory를 사용해보겠습니다.
 
 ## 빠른 시작 가이드
 
@@ -159,8 +148,6 @@ llamafactory-cli export examples/merge_lora/llama3_lora_sft.yaml
 ```
 
 > 도움말: `llamafactory-cli help` 명령어로 도움말을 확인할 수 있습니다.
-
-<br>
 
 ### 웹 UI 사용 (LLaMA Board)
 
@@ -184,11 +171,9 @@ llamafactory-cli webui
 
 5. **내보내기 탭**: 학습된 모델 내보내기
 
-<br>
+이번에는 웹 UI를 통해 LLaMA-Factory의 주요 기능을 살펴보겠습니다.
 
 ## 웹 UI 사용 방법 소개
-
-<br>
 
 ### 다양한 모델 지원
 
@@ -199,8 +184,6 @@ LLaMA-Factory는 정말 많은 모델 학습을 지원하고 있습니다.
 위 사진 속 모델들은 일부이며, 스크롤을 내리면 정말 다양한 모델들이 존재하는 것을 확인할 수 있은데요. 
 
 LLaMA, LLaVA, Mistral, Mixtral-MoE, Qwen, Yi, Gemma, ChatGLM, Phi 등 100개 이상의 모델 지원합니다. 그 중 DeepSeek, LLaMA 3.3, Qwen 2.5 등 최신 모델 들도 존재합니다.
-
-<br>
 
 ### Fine-tuning 방법 선택 가능
 
@@ -238,15 +221,11 @@ Full Fine-tuning부터 LoRA, QLoRA(2/3/4/5/6/8비트) 등 다양한 메모리 �
 
 ![image-20250316160717287](/assets/img/2025-03-16-Llama-Factory-1/image-20250316160717287.png)
 
-<br>
-
 ### 고급 기능 및 최적화 기법
 
 ![image-20250316161152652](/assets/img/2025-03-16-Llama-Factory-1/image-20250316161152652.png)
 
 ![image-20250316161053380](/assets/img/2025-03-16-Llama-Factory-1/image-20250316161053380.png)
-
-<br>
 
 ### Flash Attention-2
 
@@ -258,9 +237,7 @@ RTX4090, A100, H100 GPU에서 학습 속도를 크게 향상시킬 수 있습니
 
 : LLM의 파인튜닝을 최적화하기 위한 툴
 
-Llama, Mistral, Yi 모델에 대해 최대 170% 속도 향상됩니다. 
-
-<br>
+Llama, Mistral, Yi 모델에 대해 최대 170% 속도 향상됩니다.
 
 ### 모니터링 도구
 
@@ -274,8 +251,6 @@ Llama, Mistral, Yi 모델에 대해 최대 170% 속도 향상됩니다.
 - **TensorBoard**: 상세한 학습 지표 시각화
 - **Wandb**: 원격 학습 모니터링 및 실험 관리
 - **SwanLab**: 경량 실험 추적 및 시각화
-
-<br>
 
 ### 고속 추론
 
@@ -295,9 +270,9 @@ SGLang은 LLM을 위해 설계된 언어로, 파이썬에 내장된 도메인 �
 infer_backend: sglang
 ```
 
-<br>
-
 ## 결론
+
+이번 포스팅에서는 LLaMA-Factory의 개요, 설치 방법, 다양한 파인튜닝 기법, 그리고 웹 UI 사용 방법에 대해 살펴보았습니다.
 
 라마팩토리를 사용하면서 느꼈던 점은 "처음 사용해본 사람도 별도의 커스텀 없이 사용 가능하다"라는 이점이 와닿았습니다. 실제로 코드 없이 웹 UI/CLI만으로 100개가 넘는 LLM 모델(Llama, Mistral, Qwen 등) 파인튜닝 가능했습니다.
 
