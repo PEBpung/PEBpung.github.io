@@ -21,3 +21,9 @@ export const SITE = {
   lang: "ko",
   timezone: "Asia/Seoul",
 } as const;
+
+export const PROFILE = {
+  username: "pebpung",
+  description: "AI Engineer at BHSN",
+  image: "/assets/img/profile/ocean.jpeg",
+} as const;

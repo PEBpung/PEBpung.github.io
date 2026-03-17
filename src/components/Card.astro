@@ -10,24 +10,35 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
-const { title, description, ...props } = data;
+const { title, description, coverImage, ...props } = data;
 ---
 
-<li class="my-6">
-  <a
-    href={getPath(id, filePath)}
-    class:list={[
-      "inline-block text-lg font-medium text-accent",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
-  >
-    <Heading
-      style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
-    >
-      {title}
-    </Heading>
-  </a>
-  <Datetime {...props} />
-  <p>{description}</p>
+<li class="group relative my-6 pl-5 before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:rounded before:bg-accent/25 before:transition-colors hover:before:bg-accent">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <a
+        href={getPath(id, filePath)}
+        class:list={[
+          "inline-block text-lg font-medium text-accent",
+          "decoration-dashed underline-offset-4 hover:underline",
+          "focus-visible:no-underline focus-visible:underline-offset-0",
+        ]}
+      >
+        <Heading
+          style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
+        >
+          {title}
+        </Heading>
+      </a>
+      <Datetime {...props} />
+      <p>{description}</p>
+    </div>
+    {coverImage && (
+      <img
+        src={coverImage}
+        alt={title}
+        class="hidden h-20 w-30 shrink-0 rounded object-cover sm:block"
+      />
+    )}
+  </div>
 </li>

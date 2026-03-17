@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import { PROFILE, SITE } from "@/config";
+import { SOCIALS } from "@/constants";
+import LinkButton from "./LinkButton.astro";
+import getUniqueTags from "@/utils/getUniqueTags";
+
+const posts = await getCollection("blog");
+const tags = getUniqueTags(posts);
+---
+
+<aside class="flex flex-col items-center text-center">
+  <img
+    src={PROFILE.image}
+    alt={PROFILE.username}
+    class="mb-4 size-36 rounded-full object-cover ring-4 ring-accent/20"
+  />
+  <h1 class="text-2xl font-bold">{SITE.title}</h1>
+  <p class="mt-1 text-sm text-foreground/60">@{PROFILE.username}</p>
+  <p class="mt-3 text-sm leading-relaxed text-foreground/80">{PROFILE.description}</p>
+
+  {
+    SOCIALS.length > 0 && (
+      <div class="mt-5 flex gap-2">
+        {SOCIALS.map(social => (
+          <LinkButton
+            href={social.href}
+            class="rounded-full bg-muted p-2.5 transition-colors hover:bg-accent/20 hover:rotate-6"
+            title={social.linkTitle}
+          >
+            <social.icon class="inline-block size-5 fill-transparent stroke-current stroke-2 opacity-80" />
+            <span class="sr-only">{social.linkTitle}</span>
+          </LinkButton>
+        ))}
+      </div>
+    )
+  }
+
+  <div class="mt-8 flex flex-wrap justify-center gap-2.5">
+    {
+      tags.slice(0, 8).map(({ tag, tagName }) => (
+        <a
+          href={`/tags/${tag}/`}
+          class="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent transition-colors hover:bg-accent/25"
+        >
+          #{tagName}
+        </a>
+      ))
+    }
+  </div>
+</aside>

@@ -2,23 +2,58 @@
 import { getCollection } from "astro:content";
 import Main from "@/layouts/Main.astro";
 import Layout from "@/layouts/Layout.astro";
-import Tag from "@/components/Tag.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import getUniqueTags from "@/utils/getUniqueTags";
+import { slugifyStr } from "@/utils/slugify";
+import postFilter from "@/utils/postFilter";
 import { SITE } from "@/config";
 
 const posts = await getCollection("blog");
+const filteredPosts = posts.filter(postFilter);
 
-let tags = getUniqueTags(posts);
+// Count posts per tag
+const tagCounts = new Map<string, { tagName: string; count: number }>();
+for (const post of filteredPosts) {
+  for (const tag of post.data.tags) {
+    const slug = slugifyStr(tag);
+    const existing = tagCounts.get(slug);
+    if (existing) {
+      existing.count++;
+    } else {
+      tagCounts.set(slug, { tagName: tag, count: 1 });
+    }
+  }
+}
+
+const maxCount = Math.max(...[...tagCounts.values()].map(t => t.count));
+
+// Sort by tag name
+const sortedTags = [...tagCounts.entries()].sort((a, b) =>
+  a[0].localeCompare(b[0])
+);
 ---
 
 <Layout title={`Tags | ${SITE.title}`}>
   <Header />
   <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
-    <ul class="flex flex-wrap gap-6">
-      {tags.map(({ tag, tagName }) => <Tag {tag} {tagName} />)}
-    </ul>
+    <div class="flex flex-wrap gap-3">
+      {
+        sortedTags.map(([slug, { tagName, count }]) => {
+          const opacity = 0.4 + (count / maxCount) * 0.6;
+          return (
+            <a
+              href={`/tags/${slug}/`}
+              transition:name={slug}
+              class="rounded-full px-3 py-1 text-sm font-medium text-white transition-opacity hover:opacity-80"
+              style={`background-color: color-mix(in srgb, var(--accent) ${Math.round(opacity * 100)}%, transparent)`}
+            >
+              {tagName}
+              <span class="ml-1 text-xs opacity-80">({count})</span>
+            </a>
+          );
+        })
+      }
+    </div>
   </Main>
   <Footer />
 </Layout>
