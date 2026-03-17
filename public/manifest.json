@@ -1,0 +1,22 @@
+{
+  "name": "ML감자",
+  "short_name": "ML감자",
+  "description": "ML감자 - AI Engineer Blog",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#CD853F",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
