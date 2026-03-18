@@ -1,11 +1,15 @@
 ---
-import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import { PROFILE, SITE } from "@/config";
 import { SOCIALS } from "@/constants";
 import LinkButton from "./LinkButton.astro";
 import getUniqueTags from "@/utils/getUniqueTags";
 
-const posts = await getCollection("blog");
+type Props = {
+  posts: CollectionEntry<"blog">[];
+};
+
+const { posts } = Astro.props;
 const tags = getUniqueTags(posts);
 ---
 
