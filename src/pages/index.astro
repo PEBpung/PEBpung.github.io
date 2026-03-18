@@ -20,9 +20,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 <Layout>
   <Header />
   <main id="main-content" data-layout="index" class="mx-auto w-full max-w-5xl px-4">
-    <div class="grid gap-12 py-12 lg:grid-cols-[260px_1fr]">
+    <div class="grid gap-6 py-6 lg:gap-12 lg:py-12 lg:grid-cols-[260px_1fr]">
       <!-- Sidebar -->
-      <div class="border-b border-border pb-8 lg:sticky lg:top-12 lg:self-start lg:border-b-0 lg:pb-0">
+      <div class="border-b border-border pb-6 lg:sticky lg:top-12 lg:self-start lg:border-b-0 lg:pb-0">
         <Sidebar />
       </div>
 
