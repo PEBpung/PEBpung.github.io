@@ -167,6 +167,19 @@ const nextPost =
 </Layout>
 
 <script is:inline data-astro-rerun>
+  const article = document.querySelector("#article");
+  const onIdle =
+    window.requestIdleCallback ??
+    (callback =>
+      window.setTimeout(
+        () =>
+          callback({
+            didTimeout: false,
+            timeRemaining: () => 0,
+          }),
+        1
+      ));
+
   /** Create a progress indicator at the top */
   function createProgressBar() {
     // Prevent duplicate progress bars
@@ -206,14 +219,17 @@ const nextPost =
     document.addEventListener("scroll", window.__scrollHandler, {
       passive: true,
     });
+    window.__scrollHandler(new Event("scroll"));
   }
   updateScrollProgress();
 
   /** Attaches links to headings in the document,
    *  allowing sharing of sections easily */
   function addHeadingLinks() {
+    if (!article) return;
+
     const headings = Array.from(
-      document.querySelectorAll("h2, h3, h4, h5, h6")
+      article.querySelectorAll("h2, h3, h4, h5, h6")
     );
     for (const heading of headings) {
       // Skip if already processed
@@ -231,17 +247,17 @@ const nextPost =
       heading.appendChild(link);
     }
   }
-  addHeadingLinks();
 
   /** Attaches copy buttons to code blocks in the document,
    * allowing users to copy code easily. */
   function attachCopyButtons() {
-    const copyButtonLabel = "Copy";
-    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+    if (!article) return;
 
-    for (const codeBlock of codeBlocks) {
-      // Skip if already processed
-      if (codeBlock.querySelector(".copy-code")) continue;
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(article.querySelectorAll("pre"));
+
+    function enhanceCodeBlock(codeBlock) {
+      if (codeBlock.querySelector(".copy-code")) return;
 
       const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
@@ -271,6 +287,21 @@ const nextPost =
       });
     }
 
+    let index = 0;
+
+    function processBatch() {
+      const end = Math.min(index + 4, codeBlocks.length);
+      for (; index < end; index += 1) {
+        enhanceCodeBlock(codeBlocks[index]);
+      }
+
+      if (index < codeBlocks.length) {
+        window.requestAnimationFrame(processBatch);
+      }
+    }
+
+    processBatch();
+
     async function copyCode(block, button) {
       const code = block.querySelector("code");
       const text = code?.innerText;
@@ -285,10 +316,13 @@ const nextPost =
       }, 700);
     }
   }
-  attachCopyButtons();
 
-  /* Go to page start after page swap */
-  document.addEventListener("astro:after-swap", () =>
+  onIdle(() => {
+    addHeadingLinks();
+    attachCopyButtons();
+  });
+
+  window.requestAnimationFrame(() =>
     window.scrollTo({ left: 0, top: 0, behavior: "instant" })
   );
 </script>

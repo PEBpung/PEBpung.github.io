@@ -37,18 +37,20 @@ import IconArrowNarrowUp from "@/assets/icons/IconArrowNarrowUp.svg";
    * the "Back to Top" button is clicked. */
   function backToTop() {
     const rootElement = document.documentElement;
-    const btnContainer = document.querySelector("#btt-btn-container");
-    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
-    const progressIndicator = document.querySelector("#progress-indicator");
+    const btnContainer = document.querySelector<HTMLElement>("#btt-btn-container");
+    const backToTopBtn = document.querySelector<HTMLButtonElement>(
+      "[data-button='back-to-top']"
+    );
+    const progressIndicator =
+      document.querySelector<HTMLElement>("#progress-indicator");
 
     if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
       return;
 
-    // Attach click event handler for back-to-top button
-    backToTopBtn.addEventListener("click", () => {
+    backToTopBtn.onclick = () => {
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    });
+    };
 
     // Handle button visibility according to scroll position
     let lastVisible = null;
@@ -74,7 +76,11 @@ import IconArrowNarrowUp from "@/assets/icons/IconArrowNarrowUp.svg";
     }
 
     let ticking = false;
-    document.addEventListener("scroll", () => {
+    if (window.__backToTopScrollHandler) {
+      document.removeEventListener("scroll", window.__backToTopScrollHandler);
+    }
+
+    window.__backToTopScrollHandler = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           handleScroll();
@@ -82,7 +88,12 @@ import IconArrowNarrowUp from "@/assets/icons/IconArrowNarrowUp.svg";
         });
         ticking = true;
       }
+    };
+
+    document.addEventListener("scroll", window.__backToTopScrollHandler, {
+      passive: true,
     });
+    handleScroll();
   }
   backToTop();
 </script>

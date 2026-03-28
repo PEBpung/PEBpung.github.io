@@ -76,11 +76,14 @@ function setThemeFeature(): void {
   reflectPreference();
 
   // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
+  const themeButton = document.querySelector<HTMLButtonElement>("#theme-btn");
+  if (!themeButton) return;
+
+  themeButton.onclick = () => {
     themeValue = themeValue === LIGHT ? DARK : LIGHT;
     window.theme?.setTheme(themeValue);
     setPreference();
-  });
+  };
 }
 
 // Set up theme features after page load

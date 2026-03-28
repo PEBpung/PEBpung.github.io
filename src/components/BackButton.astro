@@ -32,6 +32,9 @@ import { SITE } from "@/config";
     }
   }
 
-  document.addEventListener("astro:page-load", updateGoBackUrl);
+  if (!window.__backButtonBound) {
+    document.addEventListener("astro:page-load", updateGoBackUrl);
+    window.__backButtonBound = true;
+  }
   updateGoBackUrl();
 </script>
