@@ -1,4 +1,0 @@
-User-agent:*
-Allow:/
-
-Sitemap:https://pebpung.github.io/sitemap.xml
