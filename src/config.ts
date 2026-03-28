@@ -22,6 +22,12 @@ export const SITE = {
   timezone: "Asia/Seoul",
 } as const;
 
+export const ADSENSE = {
+  enabled: true,
+  publisherId: "2853897577129853",
+  inArticleSlot: "9024808230",
+} as const;
+
 export const PROFILE = {
   username: "pebpung",
   description: "AI Engineer at BHSN",

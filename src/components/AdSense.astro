@@ -1,0 +1,67 @@
+---
+import { ADSENSE } from "@/config";
+
+const { slot = ADSENSE.inArticleSlot, class: className } = Astro.props;
+const adClient = `ca-pub-${ADSENSE.publisherId}`;
+---
+
+{
+  ADSENSE.enabled && (
+    <>
+      <div
+        data-pagefind-ignore
+        class:list={[
+          "adsense-slot my-10 overflow-hidden rounded-xl border border-dashed border-border/70 bg-muted/35 p-3 sm:p-4",
+          className,
+        ]}
+      >
+        <ins
+          class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client={adClient}
+          data-ad-slot={slot}
+        />
+      </div>
+      <script is:inline>
+        (() => {
+          if (typeof window === "undefined") return;
+
+          if (!window.__initAdsenseUnits) {
+            window.__initAdsenseUnits = () => {
+              const adUnits = Array.from(
+                document.querySelectorAll("ins.adsbygoogle")
+              ).filter(
+                element =>
+                  element instanceof HTMLElement &&
+                  !element.dataset.adsbygoogleStatus
+              );
+
+              if (!adUnits.length) return;
+
+              window.adsbygoogle = window.adsbygoogle || [];
+              for (const _unit of adUnits) {
+                try {
+                  window.adsbygoogle.push({});
+                } catch (_error) {
+                  break;
+                }
+              }
+            };
+
+            document.addEventListener(
+              "astro:page-load",
+              window.__initAdsenseUnits
+            );
+            window.addEventListener("load", window.__initAdsenseUnits, {
+              once: true,
+            });
+          }
+
+          queueMicrotask(() => window.__initAdsenseUnits());
+        })();
+      </script>
+    </>
+  )
+}
