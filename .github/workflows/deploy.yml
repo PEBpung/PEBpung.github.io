@@ -34,6 +34,8 @@ jobs:
 
       - name: "🚀 Build the project"
         run: pnpm run build
+        env:
+          PUBLIC_GOOGLE_SITE_VERIFICATION: "jhz_ZekXaLWItUeQ0yjvYwGFHR9A9oD6lqOCbJVZhZ4"
 
       - name: "📤 Upload artifact"
         uses: actions/upload-pages-artifact@v3
