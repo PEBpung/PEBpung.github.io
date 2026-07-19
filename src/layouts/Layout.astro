@@ -1,7 +1,10 @@
 ---
 
 import { ClientRouter } from "astro:transitions";
-import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
+import {
+  PUBLIC_GOOGLE_SITE_VERIFICATION,
+  PUBLIC_GA_MEASUREMENT_ID,
+} from "astro:env/client";
 import { ADSENSE, SITE } from "@/config";
 import "@/styles/global.css";
 
@@ -150,6 +153,36 @@ const structuredData = {
           name="google-site-verification"
           content={PUBLIC_GOOGLE_SITE_VERIFICATION}
         />
+      )
+    }
+
+    {
+      // Google Analytics 4 — only in production build so local dev traffic
+      // is not tracked. Loads gtag.js once; page_view is sent manually on
+      // every astro:page-load so client-side (ClientRouter) navigations count.
+      import.meta.env.PROD && PUBLIC_GA_MEASUREMENT_ID && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_MEASUREMENT_ID}`}
+          />
+          <script is:inline define:vars={{ gaId: PUBLIC_GA_MEASUREMENT_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", gaId, { send_page_view: false });
+            document.addEventListener("astro:page-load", () => {
+              gtag("event", "page_view", {
+                page_title: document.title,
+                page_location: location.href,
+                page_path: location.pathname + location.search,
+              });
+            });
+          </script>
+        </>
       )
     }
 

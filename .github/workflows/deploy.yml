@@ -36,6 +36,7 @@ jobs:
         run: pnpm run build
         env:
           PUBLIC_GOOGLE_SITE_VERIFICATION: "jhz_ZekXaLWItUeQ0yjvYwGFHR9A9oD6lqOCbJVZhZ4"
+          PUBLIC_GA_MEASUREMENT_ID: "G-Z39NHBJGVV"
 
       - name: "📤 Upload artifact"
         uses: actions/upload-pages-artifact@v3
