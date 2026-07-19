@@ -66,11 +66,39 @@ const structuredData = {
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Load Font -->
-    <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" />
+    <!-- Warm up connections to external origins used below -->
+    <link rel="preconnect" href="https://spoqa.github.io" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <!-- KaTeX Math Rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <!-- Load Font (non-render-blocking: preload then swap to stylesheet) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      />
+    </noscript>
+
+    <!-- KaTeX Math Rendering (non-render-blocking) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      />
+    </noscript>
 
     <!-- General Meta Tags -->
     <title>{title}</title>
